@@ -145,11 +145,12 @@ export default function WeddingWebsite() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [attendingError, setAttendingError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    attending: "Yes",
+    attending: "",
     guestCount: "",
     guests: [],
     allergies: "",
@@ -198,6 +199,13 @@ export default function WeddingWebsite() {
 
     setEmailError("");
 
+    if (!form.attending) {
+      setAttendingError("Please select whether you will be attending.");
+      setSubmitError("Please select whether you will be attending.");
+      return;
+    }
+
+    setAttendingError("");
     setSubmitting(true);
     setSubmitError("");
 
@@ -462,10 +470,25 @@ export default function WeddingWebsite() {
                   </Field>
 
                   <Field label="Will you be attending?">
-                    <Select value={form.attending} onChange={(event) => setForm({ ...form, attending: event.target.value })}>
+                    <Select
+                      required
+                      value={form.attending}
+                      onChange={(event) => {
+                        setForm({ ...form, attending: event.target.value });
+                        if (attendingError) setAttendingError("");
+                      }}
+                    >
+                      <option value="" disabled>
+                        Select response
+                      </option>
                       <option value="Yes">Yes</option>
                       <option value="No">No</option>
                     </Select>
+                    {attendingError && (
+                      <p className="mt-2 text-sm font-medium text-red-600">
+                        {attendingError}
+                      </p>
+                    )}
                   </Field>
                 </div>
 
