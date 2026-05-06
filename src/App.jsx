@@ -17,6 +17,7 @@ const MEAL_OPTIONS = [
 
 const STORAGE_KEY = "istiak-eram-wedding-rsvps";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpMuf0oOTmw7eaLNE_Ylbr9DGPawrtIKFfnVia068B6FT3JgOj-__vr5sfbRlH3LhYQA/exec";
+const INVITE_CODE = "IE2026";
 const NEW_LINE = String.fromCharCode(10);
 
 const nameFont = {
@@ -146,6 +147,8 @@ export default function WeddingWebsite() {
   const [submitError, setSubmitError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [attendingError, setAttendingError] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
+  const [inviteCodeError, setInviteCodeError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -187,6 +190,14 @@ export default function WeddingWebsite() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (inviteCode.trim().toUpperCase() !== INVITE_CODE) {
+      setInviteCodeError("Please enter the invitation code from your wedding card.");
+      setSubmitError("Please enter the correct invitation code before submitting your RSVP.");
+      return;
+    }
+
+    setInviteCodeError("");
 
     const email = form.email.trim();
     const validEmail = email.length > 3 && email.includes("@") && email.includes(".") && !email.includes(" ") && email.indexOf("@") > 0 && email.lastIndexOf(".") > email.indexOf("@") + 1;
@@ -440,6 +451,25 @@ export default function WeddingWebsite() {
                   <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">RSVP</p>
                   <h2 className="mt-2 font-serif text-4xl">Confirm Your Attendance</h2>
                   <p className="mt-3 text-stone-600">Please fill out the form below and choose a meal for each guest.</p>
+                </div>
+
+                <div className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4">
+                  <Field label="Invitation Code">
+                    <Input
+                      required
+                      value={inviteCode}
+                      onChange={(event) => {
+                        setInviteCode(event.target.value.toUpperCase());
+                        if (inviteCodeError) setInviteCodeError("");
+                      }}
+                      placeholder="Enter code from wedding card"
+                    />
+                    {inviteCodeError && (
+                      <p className="mt-2 text-sm font-medium text-red-600">
+                        {inviteCodeError}
+                      </p>
+                    )}
+                  </Field>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
