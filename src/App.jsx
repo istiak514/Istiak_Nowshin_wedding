@@ -11,7 +11,7 @@ const VENUE = {
 
 const MEAL_OPTIONS = [
   { value: "Salmon", label: "🐟 Salmon" },
-  { value: "Steak", label: "🥩 Steak" },
+  { value: "Steak", label: "🥩 Steak (Halal)" },
   { value: "Vegetarian", label: "🥗 Vegetarian" },
 ];
 
