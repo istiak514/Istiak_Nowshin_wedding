@@ -146,18 +146,32 @@ export default function WeddingWebsite() {
     email: "",
     phone: "",
     attending: "Yes",
-    guestCount: 1,
+    guestCount: "1",
     guests: [{ name: "", meal: "Salmon" }],
     allergies: "",
     notes: "",
   });
 
   function updateGuestCount(value) {
-    const count = Math.max(1, Math.min(12, Number(value) || 1));
+    const cleanedValue = String(value).replace(/[^0-9]/g, "");
+
+    if (cleanedValue === "") {
+      setForm({ ...form, guestCount: "", guests: [] });
+      return;
+    }
+
+    const count = Math.max(1, Math.min(12, Number(cleanedValue)));
     const guests = Array.from({ length: count }, (_, index) => {
       return form.guests[index] || { name: "", meal: "Salmon" };
     });
-    setForm({ ...form, guestCount: count, guests });
+
+    setForm({ ...form, guestCount: String(count), guests });
+  }
+
+  function fixGuestCountOnBlur() {
+    if (form.guestCount === "") {
+      updateGuestCount("1");
+    }
   }
 
   function updateGuest(index, key, value) {
@@ -172,6 +186,7 @@ export default function WeddingWebsite() {
       id: String(Date.now()),
       submittedAt: new Date().toISOString(),
       ...form,
+      guestCount: Number(form.guestCount) || 1,
     };
     const saved = safeReadRsvps();
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
@@ -411,7 +426,16 @@ export default function WeddingWebsite() {
                 {form.attending === "Yes" && (
                   <>
                     <Field label="How many people will attend, including you?">
-                      <Input type="number" min="1" max="12" value={form.guestCount} onChange={(event) => updateGuestCount(event.target.value)} />
+                      <Input
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        required
+                        value={form.guestCount}
+                        onChange={(event) => updateGuestCount(event.target.value)}
+                        onBlur={fixGuestCountOnBlur}
+                        placeholder="Enter number of guests"
+                      />
                     </Field>
 
                     <div className="space-y-4">
