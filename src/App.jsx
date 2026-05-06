@@ -162,7 +162,7 @@ export default function WeddingWebsite() {
 
     const count = Math.max(1, Math.min(12, Number(cleanedValue)));
     const guests = Array.from({ length: count }, (_, index) => {
-      return form.guests[index] || { name: "", meal: "Salmon" };
+      return form.guests[index] || { name: "", meal: "" };
     });
 
     setForm({ ...form, guestCount: String(count), guests });
@@ -453,7 +453,14 @@ export default function WeddingWebsite() {
                             </Field>
 
                             <Field label="Meal Choice">
-                              <Select value={guest.meal} onChange={(event) => updateGuest(index, "meal", event.target.value)}>
+                              <Select
+                                required
+                                value={guest.meal}
+                                onChange={(event) => updateGuest(index, "meal", event.target.value)}
+                              >
+                                <option value="" disabled>
+                                  Select meal
+                                </option>
                                 {MEAL_OPTIONS.map((meal) => (
                                   <option key={meal.value} value={meal.value}>{meal.label}</option>
                                 ))}
