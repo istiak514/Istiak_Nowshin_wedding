@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80";
+const HERO_IMAGE = "/hero-wedding.png.png";
 
 const VENUE = {
   name: "Verger Richard Legault",
