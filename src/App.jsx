@@ -16,6 +16,7 @@ const MEAL_OPTIONS = [
 ];
 
 const STORAGE_KEY = "istiak-eram-wedding-rsvps";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpMuf0oOTmw7eaLNE_Ylbr9DGPawrtIKFfnVia068B6FT3JgOj-__vr5sfbRlH3LhYQA/exec";
 const NEW_LINE = String.fromCharCode(10);
 
 const nameFont = {
@@ -141,6 +142,8 @@ function FloatingDecor() {
 
 export default function WeddingWebsite() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -180,17 +183,36 @@ export default function WeddingWebsite() {
     setForm({ ...form, guests });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    setSubmitting(true);
+    setSubmitError("");
+
     const rsvp = {
       id: String(Date.now()),
       submittedAt: new Date().toISOString(),
       ...form,
       guestCount: Number(form.guestCount) || 1,
     };
-    const saved = safeReadRsvps();
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
-    setSubmitted(true);
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(rsvp),
+      });
+
+      const saved = safeReadRsvps();
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError("Something went wrong. Please try again or contact Istiak and Eram directly.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function csvCell(value) {
@@ -481,8 +503,18 @@ export default function WeddingWebsite() {
                   <Textarea value={form.notes} onChange={(event) => setForm({ ...form, notes: event.target.value })} placeholder="Optional message for Istiak & Eram" />
                 </Field>
 
-                <button type="submit" className="w-full rounded-2xl bg-[#14352f] px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925]">
-                  Submit RSVP
+                {submitError && (
+                  <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    {submitError}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full rounded-2xl bg-[#14352f] px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {submitting ? "Submitting..." : "Submit RSVP"}
                 </button>
               </form>
             )}
