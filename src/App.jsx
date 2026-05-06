@@ -480,7 +480,7 @@ export default function WeddingWebsite() {
               </form>
             )}
           </div>
-        </div>
+        </div> 
       </section>
 
       <footer className="px-6 py-10 text-center text-sm text-stone-500">
