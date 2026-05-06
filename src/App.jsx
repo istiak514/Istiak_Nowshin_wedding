@@ -144,6 +144,7 @@ export default function WeddingWebsite() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -187,12 +188,15 @@ export default function WeddingWebsite() {
     event.preventDefault();
 
     const email = form.email.trim();
-    const validEmail = email.includes("@") && email.includes(".") && !email.includes(" ");
+    const validEmail = email.length > 3 && email.includes("@") && email.includes(".") && !email.includes(" ") && email.indexOf("@") > 0 && email.lastIndexOf(".") > email.indexOf("@") + 1;
 
     if (!email || !validEmail) {
+      setEmailError("Please enter a valid email address.");
       setSubmitError("Please enter a valid email address.");
       return;
     }
+
+    setEmailError("");
 
     setSubmitting(true);
     setSubmitError("");
@@ -423,7 +427,7 @@ export default function WeddingWebsite() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">RSVP</p>
                   <h2 className="mt-2 font-serif text-4xl">Confirm Your Attendance</h2>
@@ -440,9 +444,17 @@ export default function WeddingWebsite() {
                       type="email"
                       required
                       value={form.email}
-                      onChange={(event) => setForm({ ...form, email: event.target.value })}
+                      onChange={(event) => {
+                        setForm({ ...form, email: event.target.value });
+                        if (emailError) setEmailError("");
+                      }}
                       placeholder="you@example.com"
                     />
+                    {emailError && (
+                      <p className="mt-2 text-sm font-medium text-red-600">
+                        {emailError}
+                      </p>
+                    )}
                   </Field>
 
                   <Field label="Phone Number (optional)">
