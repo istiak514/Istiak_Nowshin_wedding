@@ -185,6 +185,15 @@ export default function WeddingWebsite() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    const email = form.email.trim();
+    const validEmail = email.includes("@") && email.includes(".") && !email.includes(" ");
+
+    if (!email || !validEmail) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
+
     setSubmitting(true);
     setSubmitError("");
 
@@ -427,10 +436,16 @@ export default function WeddingWebsite() {
                   </Field>
 
                   <Field label="Email">
-                    <Input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} placeholder="you@example.com" />
+                    <Input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(event) => setForm({ ...form, email: event.target.value })}
+                      placeholder="you@example.com"
+                    />
                   </Field>
 
-                  <Field label="Phone Number">
+                  <Field label="Phone Number (optional)">
                     <Input value={form.phone} onChange={(event) => setForm({ ...form, phone: event.target.value })} placeholder="(514) 000-0000" />
                   </Field>
 
