@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HERO_IMAGE = "/hero-wedding.png.png";
+const HERO_IMAGE = "/hero-wedding.png";
 
 const VENUE = {
   name: "Verger Richard Legault",
