@@ -146,8 +146,8 @@ export default function WeddingWebsite() {
     email: "",
     phone: "",
     attending: "Yes",
-    guestCount: "1",
-    guests: [{ name: "", meal: "Salmon" }],
+    guestCount: "",
+    guests: [],
     allergies: "",
     notes: "",
   });
