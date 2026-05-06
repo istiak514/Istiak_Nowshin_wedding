@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80";
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80";
 
 const VENUE = {
   name: "Verger Richard Legault",
   address: "425 Rue Binette, Saint-Joseph-du-Lac, QC J0N 1M0",
   phone: "(450) 623-6306",
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=425%20Rue%20Binette%2C%20Saint-Joseph-du-Lac%2C%20QC%20J0N%201M0",
+  mapUrl:
+    "https://www.google.com/maps/search/?api=1&query=425%20Rue%20Binette%2C%20Saint-Joseph-du-Lac%2C%20QC%20J0N%201M0",
 };
 
 const MEAL_OPTIONS = [
@@ -45,7 +47,9 @@ function SmallIcon({ children }) {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-stone-700">{label}</span>
+      <span className="mb-2 block text-sm font-medium text-stone-700">
+        {label}
+      </span>
       {children}
     </label>
   );
@@ -101,10 +105,18 @@ function FloatingDecor() {
           50% { opacity: 0.8; }
           100% { transform: translate3d(45px, 115vh, 0) rotate(260deg); opacity: 0; }
         }
+
         @keyframes weddingTwinkle {
-          0%, 100% { filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.4)); transform: scale(0.9); }
-          50% { filter: drop-shadow(0 0 12px rgba(214, 180, 109, 0.9)); transform: scale(1.18); }
+          0%, 100% {
+            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.4));
+            transform: scale(0.9);
+          }
+          50% {
+            filter: drop-shadow(0 0 12px rgba(214, 180, 109, 0.9));
+            transform: scale(1.18);
+          }
         }
+
         .wedding-float-item {
           position: absolute;
           top: -10vh;
@@ -114,12 +126,17 @@ function FloatingDecor() {
           color: #d6b46d;
           text-shadow: 0 0 12px rgba(214, 180, 109, 0.75);
         }
+
         .wedding-float-item span {
           display: block;
           animation: weddingTwinkle 2.3s ease-in-out infinite;
         }
       `}</style>
-      <div className="pointer-events-none fixed inset-0 z-20 overflow-hidden" aria-hidden="true">
+
+      <div
+        className="pointer-events-none fixed inset-0 z-20 overflow-hidden"
+        aria-hidden="true"
+      >
         {items.map((item, index) => (
           <div
             key={index}
@@ -157,6 +174,7 @@ export default function WeddingWebsite() {
     const guests = Array.from({ length: count }, (_, index) => {
       return form.guests[index] || { name: "", meal: "Salmon" };
     });
+
     setForm({ ...form, guestCount: count, guests });
   }
 
@@ -168,11 +186,13 @@ export default function WeddingWebsite() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const rsvp = {
       id: String(Date.now()),
       submittedAt: new Date().toISOString(),
       ...form,
     };
+
     const saved = safeReadRsvps();
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
     setSubmitted(true);
@@ -184,8 +204,20 @@ export default function WeddingWebsite() {
 
   function downloadCSV() {
     const saved = safeReadRsvps();
+
     const rows = [
-      ["Submitted At", "Main Guest", "Email", "Phone", "Attending", "Total Guests", "Guest Name", "Meal", "Allergies", "Notes"],
+      [
+        "Submitted At",
+        "Main Guest",
+        "Email",
+        "Phone",
+        "Attending",
+        "Total Guests",
+        "Guest Name",
+        "Meal",
+        "Allergies",
+        "Notes",
+      ],
     ];
 
     saved.forEach((item) => {
@@ -209,9 +241,11 @@ export default function WeddingWebsite() {
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
+
     link.href = url;
     link.download = "istiak-eram-wedding-rsvps.csv";
     link.click();
+
     URL.revokeObjectURL(url);
   }
 
@@ -222,6 +256,7 @@ export default function WeddingWebsite() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f4efe7] text-[#1f1a17]">
       <FloatingDecor />
+
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#d8b46a,transparent_32%),radial-gradient(circle_at_bottom_right,#14352f,transparent_34%)] opacity-40" />
 
@@ -235,21 +270,34 @@ export default function WeddingWebsite() {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
                 The Wedding of
               </p>
+
               <h1 className="text-[#1f1a17]">
-                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
+                <span
+                  style={nameFont}
+                  className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
+                >
                   Istiak
                 </span>
-                <span style={scriptFont} className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl">
+
+                <span
+                  style={scriptFont}
+                  className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl"
+                >
                   &
                 </span>
-                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
+
+                <span
+                  style={nameFont}
+                  className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
+                >
                   Eram
                 </span>
               </h1>
             </div>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-stone-700">
-              Join us as we celebrate our wedding surrounded by family, friends, and love.
+              Join us as we celebrate our wedding surrounded by family, friends,
+              and love.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -259,6 +307,7 @@ export default function WeddingWebsite() {
               >
                 RSVP Now
               </a>
+
               <button
                 type="button"
                 onClick={openDirections}
@@ -276,9 +325,11 @@ export default function WeddingWebsite() {
                 alt="Wedding celebration"
                 className="h-full w-full object-cover object-center"
               />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10" />
             </div>
-            <div className="absolute -bottom-8 left-6 hidden md:block">
-              <div className="relative overflow-hidden rounded-[1.75rem] border border-amber-200/80 bg-[#fffaf0]/95 px-6 py-5 shadow-[0_22px_55px_rgba(31,26,23,0.22)] backdrop-blur-md">
+
+            <div className="mt-5 md:absolute md:-bottom-8 md:left-6 md:mt-0">
+              <div className="relative w-full overflow-hidden rounded-[1.75rem] border border-amber-200/80 bg-[#fffaf0]/95 px-6 py-5 shadow-[0_22px_55px_rgba(31,26,23,0.22)] backdrop-blur-md md:w-auto">
                 <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-amber-300/25 blur-2xl" />
                 <div className="absolute -bottom-12 -left-12 h-28 w-28 rounded-full bg-[#14352f]/15 blur-2xl" />
 
@@ -291,7 +342,10 @@ export default function WeddingWebsite() {
                     <span className="h-px w-8 bg-amber-500/70" />
                   </div>
 
-                  <p style={nameFont} className="text-3xl font-semibold leading-none tracking-[-0.04em] text-[#1f1a17]">
+                  <p
+                    style={nameFont}
+                    className="text-3xl font-semibold leading-none tracking-[-0.04em] text-[#1f1a17]"
+                  >
                     August 22
                   </p>
 
@@ -299,7 +353,10 @@ export default function WeddingWebsite() {
                     <span className="text-5xl font-semibold leading-none text-[#14352f]">
                       2026
                     </span>
-                    <span style={scriptFont} className="text-3xl leading-none text-amber-600">
+                    <span
+                      style={scriptFont}
+                      className="text-3xl leading-none text-amber-600"
+                    >
                       ✦
                     </span>
                   </div>
@@ -316,7 +373,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
+      <section className="relative mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100">
             <Icon>📅</Icon>
@@ -334,46 +391,84 @@ export default function WeddingWebsite() {
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100">
             <Icon>🍽️</Icon>
             <h2 className="text-xl font-semibold">Dinner Options</h2>
-            <p className="mt-2 text-stone-600">🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian</p>
+            <p className="mt-2 text-stone-600">
+              🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
+      <section className="relative mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="rounded-[2rem] border border-amber-200 bg-[#211814] p-6 text-[#fffaf0] shadow-2xl lg:self-start">
-            <h2 className="font-serif text-3xl text-[#f7e7c0]">Wedding Details</h2>
+            <h2 className="font-serif text-3xl text-[#f7e7c0]">
+              Wedding Details
+            </h2>
 
             <div className="mt-6 space-y-4 text-sm text-[#fff3db]">
-              <p className="flex gap-3"><SmallIcon>📅</SmallIcon> Saturday, August 22, 2026</p>
+              <p className="flex gap-3">
+                <SmallIcon>📅</SmallIcon> Saturday, August 22, 2026
+              </p>
+
               <p className="flex gap-3">
                 <SmallIcon>📍</SmallIcon>
-                <span>{VENUE.name}<br />{VENUE.address}</span>
+                <span>
+                  {VENUE.name}
+                  <br />
+                  {VENUE.address}
+                </span>
               </p>
-              <p className="flex gap-3"><SmallIcon>☎️</SmallIcon> {VENUE.phone}</p>
-              <p className="flex gap-3"><SmallIcon>👥</SmallIcon> Please RSVP with your total number of guests and meal choice for each person.</p>
+
+              <p className="flex gap-3">
+                <SmallIcon>☎️</SmallIcon> {VENUE.phone}
+              </p>
+
+              <p className="flex gap-3">
+                <SmallIcon>👥</SmallIcon> Please RSVP with your total number of
+                guests and meal choice for each person.
+              </p>
             </div>
 
             <div className="mt-5 rounded-2xl border border-amber-300 bg-[#33241d] p-4 text-sm leading-6 text-[#fff3db]">
-              Ceremony time, reception time, dress code, parking notes, hotel details, and registry information can be added here once confirmed.
+              Ceremony time, reception time, dress code, parking notes, hotel
+              details, and registry information can be added here once
+              confirmed.
             </div>
           </div>
 
-          <div id="rsvp" className="rounded-[2rem] bg-[#fffaf0] p-6 shadow-xl ring-1 ring-amber-100 md:p-8">
+          <div
+            id="rsvp"
+            className="rounded-[2rem] bg-[#fffaf0] p-6 shadow-xl ring-1 ring-amber-100 md:p-8"
+          >
             {submitted ? (
               <div className="grid min-h-[520px] place-items-center text-center">
                 <div>
-                  <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">✓</div>
+                  <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">
+                    ✓
+                  </div>
+
                   <h2 className="font-serif text-4xl">Thank you!</h2>
+
                   <p className="mx-auto mt-4 max-w-md text-stone-600">
-                    Your RSVP has been saved on this device. When this goes live, we can connect it to Google Sheets so every guest response is stored in one master list.
+                    Your RSVP has been saved on this device. When this goes
+                    live, we can connect it to Google Sheets so every guest
+                    response is stored in one master list.
                   </p>
 
                   <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                    <button type="button" onClick={() => setSubmitted(false)} className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-[#f8f1e7]">
+                    <button
+                      type="button"
+                      onClick={() => setSubmitted(false)}
+                      className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-stone-50"
+                    >
                       Submit Another RSVP
                     </button>
-                    <button type="button" onClick={downloadCSV} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-stone-950 px-5 py-3 font-semibold text-white hover:bg-stone-800">
+
+                    <button
+                      type="button"
+                      onClick={downloadCSV}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#14352f] px-5 py-3 font-semibold text-white hover:bg-[#0f2925]"
+                    >
                       <span>⬇</span> Download CSV
                     </button>
                   </div>
@@ -382,26 +477,58 @@ export default function WeddingWebsite() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">RSVP</p>
-                  <h2 className="mt-2 font-serif text-4xl">Confirm Your Attendance</h2>
-                  <p className="mt-3 text-stone-600">Please fill out the form below and choose a meal for each guest.</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">
+                    RSVP
+                  </p>
+                  <h2 className="mt-2 font-serif text-4xl">
+                    Confirm Your Attendance
+                  </h2>
+                  <p className="mt-3 text-stone-600">
+                    Please fill out the form below and choose a meal for each
+                    guest.
+                  </p>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <Field label="Full Name">
-                    <Input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} placeholder="Your full name" />
+                    <Input
+                      required
+                      value={form.name}
+                      onChange={(event) =>
+                        setForm({ ...form, name: event.target.value })
+                      }
+                      placeholder="Your full name"
+                    />
                   </Field>
 
                   <Field label="Email">
-                    <Input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} placeholder="you@example.com" />
+                    <Input
+                      type="email"
+                      value={form.email}
+                      onChange={(event) =>
+                        setForm({ ...form, email: event.target.value })
+                      }
+                      placeholder="you@example.com"
+                    />
                   </Field>
 
                   <Field label="Phone Number">
-                    <Input value={form.phone} onChange={(event) => setForm({ ...form, phone: event.target.value })} placeholder="(514) 000-0000" />
+                    <Input
+                      value={form.phone}
+                      onChange={(event) =>
+                        setForm({ ...form, phone: event.target.value })
+                      }
+                      placeholder="(514) 000-0000"
+                    />
                   </Field>
 
                   <Field label="Will you attend?">
-                    <Select value={form.attending} onChange={(event) => setForm({ ...form, attending: event.target.value })}>
+                    <Select
+                      value={form.attending}
+                      onChange={(event) =>
+                        setForm({ ...form, attending: event.target.value })
+                      }
+                    >
                       <option value="Yes">Yes</option>
                       <option value="No">No</option>
                     </Select>
@@ -411,27 +538,52 @@ export default function WeddingWebsite() {
                 {form.attending === "Yes" && (
                   <>
                     <Field label="How many people will attend, including you?">
-                      <Input type="number" min="1" max="12" value={form.guestCount} onChange={(event) => updateGuestCount(event.target.value)} />
+                      <Input
+                        type="number"
+                        min="1"
+                        max="12"
+                        value={form.guestCount}
+                        onChange={(event) =>
+                          updateGuestCount(event.target.value)
+                        }
+                      />
                     </Field>
 
                     <div className="space-y-4">
                       {form.guests.map((guest, index) => (
-                        <div key={index} className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4">
-                          <h3 className="mb-4 font-semibold">Guest {index + 1}</h3>
+                        <div
+                          key={index}
+                          className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4"
+                        >
+                          <h3 className="mb-4 font-semibold">
+                            Guest {index + 1}
+                          </h3>
+
                           <div className="grid gap-4 md:grid-cols-2">
                             <Field label="Guest Name">
                               <Input
                                 required
                                 value={guest.name}
-                                onChange={(event) => updateGuest(index, "name", event.target.value)}
-                                placeholder={index === 0 ? "Your name" : "Guest name"}
+                                onChange={(event) =>
+                                  updateGuest(index, "name", event.target.value)
+                                }
+                                placeholder={
+                                  index === 0 ? "Your name" : "Guest name"
+                                }
                               />
                             </Field>
 
                             <Field label="Meal Choice">
-                              <Select value={guest.meal} onChange={(event) => updateGuest(index, "meal", event.target.value)}>
+                              <Select
+                                value={guest.meal}
+                                onChange={(event) =>
+                                  updateGuest(index, "meal", event.target.value)
+                                }
+                              >
                                 {MEAL_OPTIONS.map((meal) => (
-                                  <option key={meal.value} value={meal.value}>{meal.label}</option>
+                                  <option key={meal.value} value={meal.value}>
+                                    {meal.label}
+                                  </option>
                                 ))}
                               </Select>
                             </Field>
@@ -441,16 +593,31 @@ export default function WeddingWebsite() {
                     </div>
 
                     <Field label="Allergies or Dietary Restrictions">
-                      <Textarea value={form.allergies} onChange={(event) => setForm({ ...form, allergies: event.target.value })} placeholder="Please mention any allergies or dietary restrictions." />
+                      <Textarea
+                        value={form.allergies}
+                        onChange={(event) =>
+                          setForm({ ...form, allergies: event.target.value })
+                        }
+                        placeholder="Please mention any allergies or dietary restrictions."
+                      />
                     </Field>
                   </>
                 )}
 
                 <Field label="Message / Notes">
-                  <Textarea value={form.notes} onChange={(event) => setForm({ ...form, notes: event.target.value })} placeholder="Optional message for Istiak & Eram" />
+                  <Textarea
+                    value={form.notes}
+                    onChange={(event) =>
+                      setForm({ ...form, notes: event.target.value })
+                    }
+                    placeholder="Optional message for Istiak & Eram"
+                  />
                 </Field>
 
-                <button type="submit" className="w-full rounded-2xl bg-[#14352f] px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925]">
+                <button
+                  type="submit"
+                  className="w-full rounded-2xl bg-[#14352f] px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925]"
+                >
                   Submit RSVP
                 </button>
               </form>
@@ -460,8 +627,15 @@ export default function WeddingWebsite() {
       </section>
 
       <footer className="px-6 py-10 text-center text-sm text-stone-500">
-        <p style={nameFont} className="text-4xl font-semibold tracking-[-0.04em] text-[#14352f]">
-          Istiak <span style={scriptFont} className="text-5xl text-amber-600">&</span> Eram
+        <p
+          style={nameFont}
+          className="text-4xl font-semibold tracking-[-0.04em] text-[#14352f]"
+        >
+          Istiak{" "}
+          <span style={scriptFont} className="text-5xl text-amber-600">
+            &
+          </span>{" "}
+          Eram
         </p>
         <p className="mt-2">August 22, 2026 · {VENUE.name}</p>
       </footer>
