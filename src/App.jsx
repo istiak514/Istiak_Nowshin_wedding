@@ -44,6 +44,25 @@ function SmallIcon({ children }) {
   return <span className="mt-0.5 shrink-0 text-xl leading-none">{children}</span>;
 }
 
+function DateIcon({ small = false }) {
+  return (
+    <span
+      className={
+        small
+          ? "mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-amber-300 bg-[#fffaf0] text-[#14352f] shadow-sm"
+          : "mb-4 grid h-12 w-12 place-items-center rounded-xl border border-amber-300 bg-[#fffaf0] text-[#14352f] shadow-sm"
+      }
+    >
+      <span className={small ? "text-[7px] font-bold uppercase tracking-[0.12em] text-amber-700" : "text-[9px] font-bold uppercase tracking-[0.14em] text-amber-700"}>
+        Aug
+      </span>
+      <span className={small ? "-mt-2 text-sm font-black leading-none" : "-mt-3 text-lg font-black leading-none"}>
+        22
+      </span>
+    </span>
+  );
+}
+
 function Field({ label, children }) {
   return (
     <label className="block">
@@ -388,7 +407,7 @@ export default function WeddingWebsite() {
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100">
-            <Icon>📅</Icon>
+            <DateIcon />
             <h2 className="text-xl font-semibold">Date</h2>
             <p className="mt-2 text-stone-600">Saturday, August 22, 2026</p>
           </div>
@@ -414,7 +433,7 @@ export default function WeddingWebsite() {
             <h2 className="font-serif text-3xl text-[#f7e7c0]">Wedding Details</h2>
 
             <div className="mt-6 space-y-4 text-sm text-[#fff3db]">
-              <p className="flex gap-3"><SmallIcon>📅</SmallIcon> Saturday, August 22, 2026</p>
+              <p className="flex gap-3"><DateIcon small /> Saturday, August 22, 2026</p>
               <p className="flex gap-3">
                 <SmallIcon>📍</SmallIcon>
                 <span>{VENUE.name}<br />{VENUE.address}</span>
