@@ -366,7 +366,7 @@ export default function WeddingWebsite() {
                 <span>{VENUE.name}<br />{VENUE.address}</span>
               </p>
               <p className="flex gap-3"><SmallIcon>☎️</SmallIcon> {VENUE.phone}</p>
-              <p className="flex gap-3"><SmallIcon>👥</SmallIcon> Please RSVP with your total number of guests and meal choice for each person.</p>
+              <p className="flex gap-3"><SmallIcon>👥</SmallIcon> Please RSVP with your total number of guests and a meal choice for each person.</p>
             </div>
 
             <div className="mt-5 rounded-2xl border border-amber-300 bg-[#33241d] p-4 text-sm leading-6 text-[#fff3db]">
@@ -415,7 +415,7 @@ export default function WeddingWebsite() {
                     <Input value={form.phone} onChange={(event) => setForm({ ...form, phone: event.target.value })} placeholder="(514) 000-0000" />
                   </Field>
 
-                  <Field label="Will you attend?">
+                  <Field label="Will you be attending?">
                     <Select value={form.attending} onChange={(event) => setForm({ ...form, attending: event.target.value })}>
                       <option value="Yes">Yes</option>
                       <option value="No">No</option>
@@ -480,7 +480,7 @@ export default function WeddingWebsite() {
               </form>
             )}
           </div>
-        </div> 
+        </div>
       </section>
 
       <footer className="px-6 py-10 text-center text-sm text-stone-500">
