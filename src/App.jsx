@@ -403,15 +403,12 @@ export default function WeddingWebsite() {
                   <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">✓</div>
                   <h2 className="font-serif text-4xl">Thank you!</h2>
                   <p className="mx-auto mt-4 max-w-md text-stone-600">
-                    Your RSVP has been saved on this device. When this goes live, we can connect it to Google Sheets so every guest response is stored in one master list.
+                    Your RSVP has been received. Thank you for confirming your attendance. We look forward to celebrating with you!
                   </p>
 
                   <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                     <button type="button" onClick={() => setSubmitted(false)} className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-[#f8f1e7]">
                       Submit Another RSVP
-                    </button>
-                    <button type="button" onClick={downloadCSV} className="inline-flex items-center justify-center gap-2 rounded-2xl bg-stone-950 px-5 py-3 font-semibold text-white hover:bg-stone-800">
-                      <span>⬇</span> Download CSV
                     </button>
                   </div>
                 </div>
