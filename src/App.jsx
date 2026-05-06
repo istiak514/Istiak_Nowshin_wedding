@@ -452,26 +452,6 @@ export default function WeddingWebsite() {
                   <h2 className="mt-2 font-serif text-4xl">Confirm Your Attendance</h2>
                   <p className="mt-3 text-stone-600">Please fill out the form below and choose a meal for each guest.</p>
                 </div>
-
-                <div className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4">
-                  <Field label="Invitation Code">
-                    <Input
-                      required
-                      value={inviteCode}
-                      onChange={(event) => {
-                        setInviteCode(event.target.value.toUpperCase());
-                        if (inviteCodeError) setInviteCodeError("");
-                      }}
-                      placeholder="Enter code from wedding card"
-                    />
-                    {inviteCodeError && (
-                      <p className="mt-2 text-sm font-medium text-red-600">
-                        {inviteCodeError}
-                      </p>
-                    )}
-                  </Field>
-                </div>
-
                 <div className="grid gap-4 md:grid-cols-2">
                   <Field label="Full Name">
                     <Input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} placeholder="Your full name" />
@@ -579,6 +559,39 @@ export default function WeddingWebsite() {
                 <Field label="Message / Notes">
                   <Textarea value={form.notes} onChange={(event) => setForm({ ...form, notes: event.target.value })} placeholder="Optional message for Istiak & Eram" />
                 </Field>
+
+                <div className="rounded-3xl border-2 border-amber-400 bg-gradient-to-br from-[#fffaf0] via-[#fff7e6] to-[#f8e6bd] p-5 shadow-[0_14px_35px_rgba(214,180,109,0.28)]">
+                  <div className="mb-3 flex items-center gap-2">
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-[#14352f] text-sm text-white">
+                      🔐
+                    </span>
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-800">
+                        Invitation Code Required
+                      </p>
+                      <p className="mt-1 text-sm text-stone-600">
+                        Enter the code from your wedding invitation before submitting.
+                      </p>
+                    </div>
+                  </div>
+
+                  <Field label="Invitation Code">
+                    <Input
+                      required
+                      value={inviteCode}
+                      onChange={(event) => {
+                        setInviteCode(event.target.value.toUpperCase());
+                        if (inviteCodeError) setInviteCodeError("");
+                      }}
+                      placeholder="Enter invitation code"
+                    />
+                    {inviteCodeError && (
+                      <p className="mt-2 text-sm font-medium text-red-600">
+                        {inviteCodeError}
+                      </p>
+                    )}
+                  </Field>
+                </div>
 
                 {submitError && (
                   <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
