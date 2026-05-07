@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HERO_IMAGE = "/ie2026.png";
+const HERO_IMAGE = "/ie2026";
 
 const VENUE = {
   name: "Verger Richard Legault",
@@ -11,13 +11,27 @@ const VENUE = {
 
 const MEAL_OPTIONS = [
   { value: "Salmon", label: "🐟 Salmon" },
-  { value: "Steak", label: "🥩 Steak (Halal)" },
+  { value: "Steak", label: "🥩 Steak" },
   { value: "Vegetarian", label: "🥗 Vegetarian" },
 ];
 
 const STORAGE_KEY = "istiak-eram-wedding-rsvps";
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpMuf0oOTmw7eaLNE_Ylbr9DGPawrtIKFfnVia068B6FT3JgOj-__vr5sfbRlH3LhYQA/exec";
 const INVITE_CODE = "IE2026";
+
+const CALENDAR_EVENT = {
+  title: "Istiak & Eram Wedding",
+  startDate: "20260822",
+  endDate: "20260823",
+  details: "Wedding celebration for Istiak and Eram. Please check the wedding website for RSVP and event details.",
+  location: `${VENUE.name}, ${VENUE.address}`,
+};
+
+const GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+  CALENDAR_EVENT.title
+)}&dates=${CALENDAR_EVENT.startDate}/${CALENDAR_EVENT.endDate}&details=${encodeURIComponent(
+  CALENDAR_EVENT.details
+)}&location=${encodeURIComponent(CALENDAR_EVENT.location)}`;
 const NEW_LINE = String.fromCharCode(10);
 
 const nameFont = {
@@ -168,6 +182,7 @@ export default function WeddingWebsite() {
   const [attendingError, setAttendingError] = useState("");
   const [inviteCode, setInviteCode] = useState("");
   const [inviteCodeError, setInviteCodeError] = useState("");
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -303,6 +318,37 @@ export default function WeddingWebsite() {
     URL.revokeObjectURL(url);
   }
 
+  function downloadCalendarInvite() {
+    const icsLines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Istiak and Eram Wedding//RSVP Website//EN",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+      "BEGIN:VEVENT",
+      "UID:istiak-eram-wedding-20260822@example.com",
+      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`,
+      `DTSTART;VALUE=DATE:${CALENDAR_EVENT.startDate}`,
+      `DTEND;VALUE=DATE:${CALENDAR_EVENT.endDate}`,
+      `SUMMARY:${CALENDAR_EVENT.title}`,
+      `DESCRIPTION:${CALENDAR_EVENT.details}`,
+      `LOCATION:${CALENDAR_EVENT.location}`,
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ];
+
+    const blob = new Blob([icsLines.join(NEW_LINE)], {
+      type: "text/calendar;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "istiak-eram-wedding.ics";
+    link.click();
+    URL.revokeObjectURL(url);
+    setCalendarOpen(false);
+  }
+
   function openDirections() {
     window.open(VENUE.mapUrl, "_blank", "noopener,noreferrer");
   }
@@ -354,6 +400,37 @@ export default function WeddingWebsite() {
               >
                 Get Directions
               </button>
+
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setCalendarOpen(!calendarOpen)}
+                  className="w-full rounded-2xl border border-amber-300 bg-[#fffaf0]/90 px-6 py-3 text-center font-semibold text-[#14352f] shadow-sm transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                >
+                  Add to Calendar
+                </button>
+
+                {calendarOpen && (
+                  <div className="absolute left-0 z-30 mt-3 w-full overflow-hidden rounded-2xl border border-amber-200 bg-[#fffaf0] shadow-xl sm:w-56">
+                    <a
+                      href={GOOGLE_CALENDAR_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => setCalendarOpen(false)}
+                      className="block px-5 py-3 text-sm font-semibold text-[#14352f] hover:bg-[#f8f1e7]"
+                    >
+                      Google Calendar
+                    </a>
+                    <button
+                      type="button"
+                      onClick={downloadCalendarInvite}
+                      className="block w-full px-5 py-3 text-left text-sm font-semibold text-[#14352f] hover:bg-[#f8f1e7]"
+                    >
+                      Apple / Outlook Calendar
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
