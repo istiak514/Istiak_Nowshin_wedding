@@ -396,7 +396,7 @@ export default function WeddingWebsite() {
               <button
                 type="button"
                 onClick={openDirections}
-                className="rounded-2xl border border-amber-300 bg-[#fffaf0]/90 px-6 py-3 text-center font-semibold text-[#14352f] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
+                className="rounded-2xl bg-[#d68a1f] px-6 py-3 text-center font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#b87316]"
               >
                 Get Directions
               </button>
@@ -405,26 +405,26 @@ export default function WeddingWebsite() {
                 <button
                   type="button"
                   onClick={() => setCalendarOpen(!calendarOpen)}
-                  className="w-full rounded-2xl border border-amber-300 bg-[#fffaf0]/90 px-6 py-3 text-center font-semibold text-[#14352f] shadow-sm transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                  className="w-full rounded-2xl bg-[#7a2e45] px-6 py-3 text-center font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#642539] sm:w-auto"
                 >
                   Add to Calendar
                 </button>
 
                 {calendarOpen && (
-                  <div className="absolute left-0 z-30 mt-3 w-full overflow-hidden rounded-2xl border border-amber-200 bg-[#fffaf0] shadow-xl sm:w-56">
+                  <div className="absolute left-0 z-30 mt-3 w-full overflow-hidden rounded-2xl border border-rose-200 bg-[#fffaf0] shadow-xl sm:w-56">
                     <a
                       href={GOOGLE_CALENDAR_URL}
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setCalendarOpen(false)}
-                      className="block px-5 py-3 text-sm font-semibold text-[#14352f] hover:bg-[#f8f1e7]"
+                      className="block px-5 py-3 text-sm font-semibold text-[#7a2e45] hover:bg-[#f8f1e7]"
                     >
                       Google Calendar
                     </a>
                     <button
                       type="button"
                       onClick={downloadCalendarInvite}
-                      className="block w-full px-5 py-3 text-left text-sm font-semibold text-[#14352f] hover:bg-[#f8f1e7]"
+                      className="block w-full px-5 py-3 text-left text-sm font-semibold text-[#7a2e45] hover:bg-[#f8f1e7]"
                     >
                       Apple / Outlook Calendar
                     </button>
