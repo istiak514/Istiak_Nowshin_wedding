@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
 const HERO_IMAGE = "/ie2026.png";
-const LOGO_IMAGE = "/logo.png";
 
 const VENUE = {
   name: "Verger Richard Legault",
   address: "425 Rue Binette, Saint-Joseph-du-Lac, QC J0N 1M0",
   phone: "(450) 623-6306",
-  mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=425%20Rue%20Binette%2C%20Saint-Joseph-du-Lac%2C%20QC%20J0N%201M0",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=425%20Rue%20Binette%2C%20Saint-Joseph-du-Lac%2C%20QC%20J0N%201M0",
 };
 
 const MEAL_OPTIONS = [
@@ -18,17 +16,14 @@ const MEAL_OPTIONS = [
 ];
 
 const STORAGE_KEY = "istiak-eram-wedding-rsvps";
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwpMuf0oOTmw7eaLNE_Ylbr9DGPawrtIKFfnVia068B6FT3JgOj-__vr5sfbRlH3LhYQA/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwpMuf0oOTmw7eaLNE_Ylbr9DGPawrtIKFfnVia068B6FT3JgOj-__vr5sfbRlH3LhYQA/exec";
 const INVITE_CODE = "IE2026";
-const NEW_LINE = String.fromCharCode(10);
 
 const CALENDAR_EVENT = {
   title: "Istiak & Eram Wedding",
   startDate: "20260822",
   endDate: "20260823",
-  details:
-    "Wedding celebration for Istiak and Eram. Please check the wedding website for RSVP and event details.",
+  details: "Wedding celebration for Istiak and Eram. Please check the wedding website for RSVP and event details.",
   location: `${VENUE.name}, ${VENUE.address}`,
 };
 
@@ -37,6 +32,7 @@ const GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/render?action=
 )}&dates=${CALENDAR_EVENT.startDate}/${CALENDAR_EVENT.endDate}&details=${encodeURIComponent(
   CALENDAR_EVENT.details
 )}&location=${encodeURIComponent(CALENDAR_EVENT.location)}`;
+const NEW_LINE = String.fromCharCode(10);
 
 const nameFont = {
   fontFamily: 'Georgia, "Times New Roman", serif',
@@ -71,22 +67,10 @@ function DateIcon({ small = false }) {
           : "mb-4 grid h-12 w-12 place-items-center rounded-xl border border-amber-300 bg-[#fffaf0] text-[#14352f] shadow-sm"
       }
     >
-      <span
-        className={
-          small
-            ? "text-[7px] font-bold uppercase tracking-[0.12em] text-amber-700"
-            : "text-[9px] font-bold uppercase tracking-[0.14em] text-amber-700"
-        }
-      >
+      <span className={small ? "text-[7px] font-bold uppercase tracking-[0.12em] text-amber-700" : "text-[9px] font-bold uppercase tracking-[0.14em] text-amber-700"}>
         Aug
       </span>
-      <span
-        className={
-          small
-            ? "-mt-2 text-sm font-black leading-none"
-            : "-mt-3 text-lg font-black leading-none"
-        }
-      >
+      <span className={small ? "-mt-2 text-sm font-black leading-none" : "-mt-3 text-lg font-black leading-none"}>
         22
       </span>
     </span>
@@ -96,9 +80,7 @@ function DateIcon({ small = false }) {
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-stone-700">
-        {label}
-      </span>
+      <span className="mb-2 block text-sm font-medium text-stone-700">{label}</span>
       {children}
     </label>
   );
@@ -154,18 +136,10 @@ function FloatingDecor() {
           50% { opacity: 0.8; }
           100% { transform: translate3d(45px, 115vh, 0) rotate(260deg); opacity: 0; }
         }
-
         @keyframes weddingTwinkle {
-          0%, 100% {
-            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.4));
-            transform: scale(0.9);
-          }
-          50% {
-            filter: drop-shadow(0 0 12px rgba(214, 180, 109, 0.9));
-            transform: scale(1.18);
-          }
+          0%, 100% { filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.4)); transform: scale(0.9); }
+          50% { filter: drop-shadow(0 0 12px rgba(214, 180, 109, 0.9)); transform: scale(1.18); }
         }
-
         .wedding-float-item {
           position: absolute;
           top: -10vh;
@@ -175,17 +149,12 @@ function FloatingDecor() {
           color: #d6b46d;
           text-shadow: 0 0 12px rgba(214, 180, 109, 0.75);
         }
-
         .wedding-float-item span {
           display: block;
           animation: weddingTwinkle 2.3s ease-in-out infinite;
         }
       `}</style>
-
-      <div
-        className="pointer-events-none fixed inset-0 z-20 overflow-hidden"
-        aria-hidden="true"
-      >
+      <div className="pointer-events-none fixed inset-0 z-20 overflow-hidden" aria-hidden="true">
         {items.map((item, index) => (
           <div
             key={index}
@@ -214,7 +183,6 @@ export default function WeddingWebsite() {
   const [inviteCode, setInviteCode] = useState("");
   const [inviteCodeError, setInviteCodeError] = useState("");
   const [calendarOpen, setCalendarOpen] = useState(false);
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -223,8 +191,8 @@ export default function WeddingWebsite() {
     guestCount: "",
     guests: [],
     allergies: "",
-    songRequest: "",
     notes: "",
+    songRequest: "",
   });
 
   function updateGuestCount(value) {
@@ -244,7 +212,7 @@ export default function WeddingWebsite() {
   }
 
   function fixGuestCountOnBlur() {
-    if (form.attending === "Yes" && form.guestCount === "") {
+    if (form.guestCount === "") {
       updateGuestCount("1");
     }
   }
@@ -258,14 +226,16 @@ export default function WeddingWebsite() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    if (inviteCode.trim().toUpperCase() !== INVITE_CODE) {
+      setInviteCodeError("Please enter the invitation code from your wedding card.");
+      setSubmitError("Please enter the correct invitation code before submitting your RSVP.");
+      return;
+    }
+
+    setInviteCodeError("");
+
     const email = form.email.trim();
-    const validEmail =
-      email.length > 3 &&
-      email.includes("@") &&
-      email.includes(".") &&
-      !email.includes(" ") &&
-      email.indexOf("@") > 0 &&
-      email.lastIndexOf(".") > email.indexOf("@") + 1;
+    const validEmail = email.length > 3 && email.includes("@") && email.includes(".") && !email.includes(" ") && email.indexOf("@") > 0 && email.lastIndexOf(".") > email.indexOf("@") + 1;
 
     if (!email || !validEmail) {
       setEmailError("Please enter a valid email address.");
@@ -282,43 +252,14 @@ export default function WeddingWebsite() {
     }
 
     setAttendingError("");
-
-    if (form.attending === "Yes") {
-      if (!form.guestCount || form.guests.length === 0) {
-        setSubmitError("Please enter the total number of guests attending.");
-        return;
-      }
-
-      const missingGuestName = form.guests.some((guest) => !guest.name.trim());
-      if (missingGuestName) {
-        setSubmitError("Please enter the name of each guest.");
-        return;
-      }
-
-      const missingMeal = form.guests.some((guest) => !guest.meal);
-      if (missingMeal) {
-        setSubmitError("Please select a meal for each guest.");
-        return;
-      }
-    }
-
-    if (inviteCode.trim().toUpperCase() !== INVITE_CODE) {
-      setInviteCodeError("Please enter the invitation code from your wedding card.");
-      setSubmitError(
-        "Please enter the correct invitation code before submitting your RSVP."
-      );
-      return;
-    }
-
-    setInviteCodeError("");
-    setSubmitError("");
     setSubmitting(true);
+    setSubmitError("");
 
     const rsvp = {
       id: String(Date.now()),
       submittedAt: new Date().toISOString(),
       ...form,
-      guestCount: form.attending === "No" ? 0 : Number(form.guestCount) || 1,
+      guestCount: Number(form.guestCount) || 1,
     };
 
     try {
@@ -335,18 +276,50 @@ export default function WeddingWebsite() {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
       setSubmitted(true);
     } catch (error) {
-      setSubmitError(
-        "Something went wrong. Please try again or contact Istiak and Eram directly."
-      );
+      setSubmitError("Something went wrong. Please try again or contact Istiak and Eram directly.");
     } finally {
       setSubmitting(false);
     }
   }
 
-  function downloadCalendarInvite() {
-    const dtStamp =
-      new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  function csvCell(value) {
+    return '"' + String(value || "").replace(/"/g, '""') + '"';
+  }
 
+  function downloadCSV() {
+    const saved = safeReadRsvps();
+    const rows = [
+      ["Submitted At", "Main Guest", "Email", "Phone", "Attending", "Total Guests", "Guest Name", "Meal", "Allergies", "Notes"],
+    ];
+
+    saved.forEach((item) => {
+      item.guests.forEach((guest) => {
+        rows.push([
+          item.submittedAt,
+          item.name,
+          item.email,
+          item.phone,
+          item.attending,
+          item.guestCount,
+          guest.name,
+          guest.meal,
+          item.allergies,
+          item.notes,
+        ]);
+      });
+    });
+
+    const csv = rows.map((row) => row.map(csvCell).join(",")).join(NEW_LINE);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "istiak-eram-wedding-rsvps.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function downloadCalendarInvite() {
     const icsLines = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
@@ -355,7 +328,7 @@ export default function WeddingWebsite() {
       "METHOD:PUBLISH",
       "BEGIN:VEVENT",
       "UID:istiak-eram-wedding-20260822@example.com",
-      `DTSTAMP:${dtStamp}`,
+      `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`,
       `DTSTART;VALUE=DATE:${CALENDAR_EVENT.startDate}`,
       `DTEND;VALUE=DATE:${CALENDAR_EVENT.endDate}`,
       `SUMMARY:${CALENDAR_EVENT.title}`,
@@ -384,8 +357,7 @@ export default function WeddingWebsite() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f4efe7] text-[#1f1a17]">
       <FloatingDecor />
-
-      <section className="relative z-10 overflow-hidden">
+      <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#d8b46a,transparent_32%),radial-gradient(circle_at_bottom_right,#14352f,transparent_34%)] opacity-40" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:py-24">
@@ -398,24 +370,14 @@ export default function WeddingWebsite() {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
                 The Wedding of
               </p>
-
               <h1 className="text-[#1f1a17]">
-                <span
-                  style={nameFont}
-                  className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
-                >
+                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
                   Istiak
                 </span>
-                <span
-                  style={scriptFont}
-                  className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl"
-                >
+                <span style={scriptFont} className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl">
                   &
                 </span>
-                <span
-                  style={nameFont}
-                  className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
-                >
+                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
                   Eram
                 </span>
               </h1>
@@ -432,7 +394,6 @@ export default function WeddingWebsite() {
               >
                 RSVP Now
               </a>
-
               <button
                 type="button"
                 onClick={openDirections}
@@ -478,11 +439,10 @@ export default function WeddingWebsite() {
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/70 bg-white shadow-2xl">
               <img
                 src={HERO_IMAGE}
-                alt="Istiak and Eram"
+                alt="Wedding celebration"
                 className="h-full w-full object-cover object-center"
               />
             </div>
-
             <div className="mt-4 px-5 md:absolute md:-bottom-8 md:left-6 md:mt-0 md:px-0">
               <div className="relative mx-auto max-w-[330px] overflow-hidden rounded-[2rem] border border-amber-200/80 bg-[#fffaf0]/95 px-5 py-4 text-center shadow-lg backdrop-blur-md md:w-auto md:max-w-none md:rounded-[1.75rem] md:px-6 md:py-5 md:shadow-[0_22px_55px_rgba(31,26,23,0.22)]">
                 <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-amber-300/25 blur-2xl" />
@@ -527,8 +487,8 @@ export default function WeddingWebsite() {
           </div>
         </div>
       </section>
-      
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-10">
+
+      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100">
             <DateIcon />
@@ -546,67 +506,43 @@ export default function WeddingWebsite() {
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100">
             <Icon>🍽️</Icon>
             <h2 className="text-xl font-semibold">Dinner Options</h2>
-            <p className="mt-2 text-stone-600">
-              🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian
-            </p>
+            <p className="mt-2 text-stone-600">🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian</p>
           </div>
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-10">
+      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="rounded-[2rem] border border-amber-200 bg-[#211814] p-6 text-[#fffaf0] shadow-2xl lg:self-start">
             <h2 className="font-serif text-3xl text-[#f7e7c0]">Wedding Details</h2>
 
             <div className="mt-6 space-y-4 text-sm text-[#fff3db]">
-              <p className="flex gap-3">
-                <DateIcon small /> Saturday, August 22, 2026
-              </p>
+              <p className="flex gap-3"><DateIcon small /> Saturday, August 22, 2026</p>
               <p className="flex gap-3">
                 <SmallIcon>📍</SmallIcon>
-                <span>
-                  {VENUE.name}
-                  <br />
-                  {VENUE.address}
-                </span>
+                <span>{VENUE.name}<br />{VENUE.address}</span>
               </p>
-              <p className="flex gap-3">
-                <SmallIcon>☎️</SmallIcon> {VENUE.phone}
-              </p>
-              <p className="flex gap-3">
-                <SmallIcon>👥</SmallIcon> Please RSVP with your total number of
-                guests and a meal choice for each person.
-              </p>
+              <p className="flex gap-3"><SmallIcon>☎️</SmallIcon> {VENUE.phone}</p>
+              <p className="flex gap-3"><SmallIcon>👥</SmallIcon> Please RSVP with your total number of guests and a meal choice for each person.</p>
             </div>
 
             <div className="mt-5 rounded-2xl border border-amber-300 bg-[#33241d] p-4 text-sm leading-6 text-[#fff3db]">
-              Ceremony time, reception time, dress code, parking notes, hotel
-              details, and registry information can be added here once confirmed.
+              Ceremony time, reception time, dress code, parking notes, hotel details, and registry information can be added here once confirmed.
             </div>
           </div>
 
-          <div
-            id="rsvp"
-            className="rounded-[2rem] bg-[#fffaf0] p-6 shadow-xl ring-1 ring-amber-100 md:p-8"
-          >
+          <div id="rsvp" className="rounded-[2rem] bg-[#fffaf0] p-6 shadow-xl ring-1 ring-amber-100 md:p-8">
             {submitted ? (
               <div className="grid min-h-[520px] place-items-center text-center">
                 <div>
-                  <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">
-                    ✓
-                  </div>
+                  <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">✓</div>
                   <h2 className="font-serif text-4xl">Thank you!</h2>
                   <p className="mx-auto mt-4 max-w-md text-stone-600">
-                    Your RSVP has been received. Thank you for confirming your
-                    attendance. We look forward to celebrating with you!
+                    Your RSVP has been received. Thank you for confirming your attendance. We look forward to celebrating with you!
                   </p>
 
-                  <div className="mt-8 flex justify-center">
-                    <button
-                      type="button"
-                      onClick={() => setSubmitted(false)}
-                      className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-stone-50"
-                    >
+                  <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                    <button type="button" onClick={() => setSubmitted(false)} className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-[#f8f1e7]">
                       Submit Another RSVP
                     </button>
                   </div>
@@ -615,27 +551,13 @@ export default function WeddingWebsite() {
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">
-                    RSVP
-                  </p>
-                  <h2 className="mt-2 font-serif text-4xl">
-                    Confirm Your Attendance
-                  </h2>
-                  <p className="mt-3 text-stone-600">
-                    Please fill out the form below and choose a meal for each guest.
-                  </p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">RSVP</p>
+                  <h2 className="mt-2 font-serif text-4xl">Confirm Your Attendance</h2>
+                  <p className="mt-3 text-stone-600">Please fill out the form below and choose a meal for each guest.</p>
                 </div>
-
                 <div className="grid gap-4 md:grid-cols-2">
                   <Field label="Full Name">
-                    <Input
-                      required
-                      value={form.name}
-                      onChange={(event) =>
-                        setForm({ ...form, name: event.target.value })
-                      }
-                      placeholder="Your full name"
-                    />
+                    <Input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} placeholder="Your full name" />
                   </Field>
 
                   <Field label="Email">
@@ -657,13 +579,7 @@ export default function WeddingWebsite() {
                   </Field>
 
                   <Field label="Phone Number (optional)">
-                    <Input
-                      value={form.phone}
-                      onChange={(event) =>
-                        setForm({ ...form, phone: event.target.value })
-                      }
-                      placeholder="(514) 000-0000"
-                    />
+                    <Input value={form.phone} onChange={(event) => setForm({ ...form, phone: event.target.value })} placeholder="(514) 000-0000" />
                   </Field>
 
                   <Field label="Will you be attending?">
@@ -706,19 +622,14 @@ export default function WeddingWebsite() {
 
                     <div className="space-y-4">
                       {form.guests.map((guest, index) => (
-                        <div
-                          key={index}
-                          className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4"
-                        >
+                        <div key={index} className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4">
                           <h3 className="mb-4 font-semibold">Guest {index + 1}</h3>
                           <div className="grid gap-4 md:grid-cols-2">
                             <Field label="Guest Name">
                               <Input
                                 required
                                 value={guest.name}
-                                onChange={(event) =>
-                                  updateGuest(index, "name", event.target.value)
-                                }
+                                onChange={(event) => updateGuest(index, "name", event.target.value)}
                                 placeholder={index === 0 ? "Your name" : "Guest name"}
                               />
                             </Field>
@@ -727,17 +638,13 @@ export default function WeddingWebsite() {
                               <Select
                                 required
                                 value={guest.meal}
-                                onChange={(event) =>
-                                  updateGuest(index, "meal", event.target.value)
-                                }
+                                onChange={(event) => updateGuest(index, "meal", event.target.value)}
                               >
                                 <option value="" disabled>
                                   Select meal
                                 </option>
                                 {MEAL_OPTIONS.map((meal) => (
-                                  <option key={meal.value} value={meal.value}>
-                                    {meal.label}
-                                  </option>
+                                  <option key={meal.value} value={meal.value}>{meal.label}</option>
                                 ))}
                               </Select>
                             </Field>
@@ -747,13 +654,7 @@ export default function WeddingWebsite() {
                     </div>
 
                     <Field label="Allergies or Dietary Restrictions">
-                      <Textarea
-                        value={form.allergies}
-                        onChange={(event) =>
-                          setForm({ ...form, allergies: event.target.value })
-                        }
-                        placeholder="Please mention any allergies or dietary restrictions."
-                      />
+                      <Textarea value={form.allergies} onChange={(event) => setForm({ ...form, allergies: event.target.value })} placeholder="Please mention any allergies or dietary restrictions." />
                     </Field>
                   </>
                 )}
@@ -846,25 +747,11 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      <footer className="relative z-10 px-6 py-14 text-center text-sm text-stone-500">
-        <img
-          src={LOGO_IMAGE}
-          alt="Istiak and Eram wedding logo"
-          className="mx-auto mb-6 h-40 w-40 object-contain opacity-95 md:h-52 md:w-52 lg:h-60 lg:w-60"
-        />
-
-        <p
-          style={nameFont}
-          className="text-4xl font-semibold tracking-[-0.04em] text-[#14352f]"
-        >
-          Istiak{" "}
-          <span style={scriptFont} className="text-5xl text-amber-600">
-            &
-          </span>{" "}
-          Eram
+      <footer className="px-6 py-10 text-center text-sm text-stone-500">
+        <p style={nameFont} className="text-4xl font-semibold tracking-[-0.04em] text-[#14352f]">
+          Istiak <span style={scriptFont} className="text-5xl text-amber-600">&</span> Eram
         </p>
-
-        <p className="mt-2 text-base">August 22, 2026 · {VENUE.name}</p>
+        <p className="mt-2">August 22, 2026 · {VENUE.name}</p>
       </footer>
     </main>
   );
