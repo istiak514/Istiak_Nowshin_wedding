@@ -464,14 +464,14 @@ export default function WeddingWebsite() {
                     August 22
                   </p>
 
-                  <div className="mt-2 flex items-end justify-center gap-3">
-                    <span style={scriptFont} className="text-2xl leading-none text-amber-600 md:text-3xl">
+                  <div className="mt-2 flex items-center justify-center gap-2.5">
+                    <span className="relative -top-[1px] inline-block text-xl leading-none text-amber-600 md:text-2xl">
                       ✦
                     </span>
                     <span className="text-4xl font-semibold leading-none text-[#14352f] md:text-5xl">
                       2026
                     </span>
-                    <span style={scriptFont} className="text-2xl leading-none text-amber-600 md:text-3xl">
+                    <span className="relative -top-[1px] inline-block text-xl leading-none text-amber-600 md:text-2xl">
                       ✦
                     </span>
                   </div>
