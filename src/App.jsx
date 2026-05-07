@@ -390,7 +390,7 @@ export default function WeddingWebsite() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:py-24">
           <div>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-[#fffaf0]/80 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur">
+            <p className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-amber-300 bg-[#fffaf0]/80 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur md:mx-0">
               <span>♡</span> We are getting married
             </p>
 
