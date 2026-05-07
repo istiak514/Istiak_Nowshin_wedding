@@ -444,12 +444,12 @@ export default function WeddingWebsite() {
               />
             </div>
             <div className="mt-4 px-5 md:absolute md:-bottom-8 md:left-6 md:mt-0 md:px-0">
-              <div className="relative mx-auto max-w-[330px] overflow-hidden rounded-[2rem] border border-amber-200/80 bg-[#fffaf0]/95 px-5 py-4 text-center shadow-lg backdrop-blur-md md:max-w-none md:rounded-[1.75rem] md:px-6 md:py-5 md:text-left md:shadow-[0_22px_55px_rgba(31,26,23,0.22)] md:w-auto">
+              <div className="relative mx-auto max-w-[330px] overflow-hidden rounded-[2rem] border border-amber-200/80 bg-[#fffaf0]/95 px-5 py-4 text-center shadow-lg backdrop-blur-md md:w-auto md:max-w-none md:rounded-[1.75rem] md:px-6 md:py-5 md:shadow-[0_22px_55px_rgba(31,26,23,0.22)]">
                 <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-amber-300/25 blur-2xl" />
                 <div className="absolute -bottom-12 -left-12 h-28 w-28 rounded-full bg-[#14352f]/15 blur-2xl" />
 
-                <div className="relative">
-                  <div className="mb-3 flex items-center justify-center gap-3 md:justify-start">
+                <div className="relative text-center">
+                  <div className="mb-3 flex items-center justify-center gap-3">
                     <span className="h-px w-6 bg-amber-500/70 md:w-8" />
                     <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-amber-700 md:text-[11px] md:tracking-[0.35em]">
                       Save the Date
@@ -457,11 +457,17 @@ export default function WeddingWebsite() {
                     <span className="h-px w-6 bg-amber-500/70 md:w-8" />
                   </div>
 
-                  <p style={nameFont} className="text-2xl font-semibold leading-none tracking-[-0.04em] text-[#1f1a17] md:text-3xl">
+                  <p
+                    style={nameFont}
+                    className="text-2xl font-semibold leading-none tracking-[-0.04em] text-[#1f1a17] md:text-3xl"
+                  >
                     August 22
                   </p>
 
-                  <div className="mt-2 flex items-end justify-center gap-2 md:justify-start">
+                  <div className="mt-2 flex items-end justify-center gap-3">
+                    <span style={scriptFont} className="text-2xl leading-none text-amber-600 md:text-3xl">
+                      ✦
+                    </span>
                     <span className="text-4xl font-semibold leading-none text-[#14352f] md:text-5xl">
                       2026
                     </span>
