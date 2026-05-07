@@ -393,12 +393,6 @@ export default function WeddingWebsite() {
             </p>
 
             <div className="mt-2 text-center md:text-left">
-              <img
-                src={LOGO_IMAGE}
-                alt="Istiak and Eram wedding logo"
-                className="mx-auto mb-6 h-24 w-24 object-contain opacity-90 md:mx-0 md:h-28 md:w-28"
-              />
-
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
                 The Wedding of
               </p>
@@ -850,11 +844,11 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      <footer className="relative z-10 px-6 py-10 text-center text-sm text-stone-500">
+      <footer className="relative z-10 px-6 py-12 text-center text-sm text-stone-500">
         <img
           src={LOGO_IMAGE}
           alt="Istiak and Eram wedding logo"
-          className="mx-auto mb-4 h-16 w-16 object-contain opacity-80"
+          className="mx-auto mb-6 h-28 w-28 object-contain opacity-95 md:h-36 md:w-36"
         />
 
         <p
@@ -867,7 +861,8 @@ export default function WeddingWebsite() {
           </span>{" "}
           Eram
         </p>
-        <p className="mt-2">August 22, 2026 · {VENUE.name}</p>
+
+        <p className="mt-2 text-base">August 22, 2026 · {VENUE.name}</p>
       </footer>
     </main>
   );
