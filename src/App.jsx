@@ -192,6 +192,7 @@ export default function WeddingWebsite() {
     guests: [],
     allergies: "",
     notes: "",
+    songRequest: "",
   });
 
   function updateGuestCount(value) {
@@ -653,8 +654,40 @@ export default function WeddingWebsite() {
                 )}
 
                 <Field label="Message / Notes">
-                  <Textarea value={form.notes} onChange={(event) => setForm({ ...form, notes: event.target.value })} placeholder="Optional message for Istiak & Eram" />
+                  <Textarea
+                    value={form.notes}
+                    onChange={(event) =>
+                      setForm({ ...form, notes: event.target.value })
+                    }
+                    placeholder="Optional message for Istiak & Eram"
+                  />
                 </Field>
+
+                <div className="rounded-3xl border border-amber-300 bg-gradient-to-br from-[#fffaf0] via-[#fff7e6] to-[#f3dfb3] p-5 shadow-[0_12px_30px_rgba(214,180,109,0.18)]">
+                  <div className="mb-3 flex items-center gap-2">
+                    <span className="grid h-10 w-10 place-items-center rounded-full border border-amber-300 bg-white text-2xl shadow-md">
+                      🎵
+                    </span>
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#14352f]">
+                        Song Request
+                      </p>
+                      <p className="mt-1 text-sm text-stone-600">
+                        Tell us one song you would love to hear at the wedding.
+                      </p>
+                    </div>
+                  </div>
+
+                  <Field label="Song Request (optional)">
+                    <Input
+                      value={form.songRequest}
+                      onChange={(event) =>
+                        setForm({ ...form, songRequest: event.target.value })
+                      }
+                      placeholder="Example: Perfect by Ed Sheeran"
+                    />
+                  </Field>
+                </div>
 
                 <div className="rounded-3xl border-2 border-amber-400 bg-gradient-to-br from-[#fffaf0] via-[#fff7e6] to-[#f8e6bd] p-5 shadow-[0_14px_35px_rgba(214,180,109,0.28)]">
                   <div className="mb-3 flex items-center gap-2">
