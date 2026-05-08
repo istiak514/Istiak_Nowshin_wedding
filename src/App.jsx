@@ -12,10 +12,215 @@ const VENUE = {
 };
 
 const MEAL_OPTIONS = [
-  { value: "Salmon", label: "🐟 Salmon" },
-  { value: "Steak", label: "🥩 Steak (Halal)" },
-  { value: "Vegetarian", label: "🥗 Vegetarian" },
+  {
+    value: "Salmon",
+    labels: {
+      en: "🐟 Salmon",
+      fr: "🐟 Saumon",
+    },
+  },
+  {
+    value: "Steak",
+    labels: {
+      en: "🥩 Steak (Halal)",
+      fr: "🥩 Steak (halal)",
+    },
+  },
+  {
+    value: "Vegetarian",
+    labels: {
+      en: "🥗 Vegetarian",
+      fr: "🥗 Végétarien",
+    },
+  },
 ];
+
+const TEXT = {
+  en: {
+    langEnglish: "EN",
+    langFrench: "FR",
+
+    weddingPill: "We are getting married",
+    weddingOf: "The Wedding of",
+    heroDescription:
+      "Join us as we celebrate our wedding surrounded by family, friends, and love.",
+    rsvpNow: "RSVP Now",
+    getDirections: "Get Directions",
+    addCalendar: "Add to Calendar",
+    googleCalendar: "Google Calendar",
+    appleOutlookCalendar: "Apple / Outlook Calendar",
+
+    saveTheDate: "Save the Date",
+    saveDateMain: "August 22",
+    dateTitle: "Date",
+    dateFull: "Saturday, August 22, 2026",
+    venueTitle: "Venue",
+    dinnerTitle: "Dinner Options",
+    dinnerOptions: "🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian",
+
+    weddingDetails: "Wedding Details",
+    rsvpInfo:
+      "Please RSVP with your total number of guests and a meal choice for each person.",
+    detailsPlaceholder:
+      "Ceremony time, reception time, dress code, parking notes, hotel details, and registry information can be added here once confirmed.",
+
+    rsvpLabel: "RSVP",
+    rsvpHeading: "Confirm Your Attendance",
+    rsvpIntro: "Please fill out the form below and choose a meal for each guest.",
+    fullName: "Full Name",
+    fullNamePlaceholder: "Your full name",
+    email: "Email",
+    emailPlaceholder: "you@example.com",
+    phone: "Phone Number (optional)",
+    phonePlaceholder: "(514) 000-0000",
+    attending: "Will you be attending?",
+    selectResponse: "Select response",
+    yes: "Yes",
+    no: "No",
+
+    guestCount: "How many people will attend, including you?",
+    guestCountPlaceholder: "Enter number of guests",
+    guest: "Guest",
+    guestName: "Guest Name",
+    yourName: "Your name",
+    guestNamePlaceholder: "Guest name",
+    mealChoice: "Meal Choice",
+    selectMeal: "Select meal",
+
+    allergies: "Allergies or Dietary Restrictions",
+    allergiesPlaceholder: "Please mention any allergies or dietary restrictions.",
+    notes: "Message / Notes",
+    notesPlaceholder: "Optional message for Istiak & Eram",
+
+    songRequestTitle: "Song Request",
+    songRequestText: "Tell us one song you would love to hear at the wedding.",
+    songRequestLabel: "Song Request (optional)",
+    songRequestPlaceholder: "Example: Perfect by Ed Sheeran",
+
+    inviteCodeTitle: "Invitation Code Required",
+    inviteCodeText:
+      "Enter the code from your wedding invitation before submitting.",
+    inviteCodeLabel: "Invitation Code",
+    inviteCodePlaceholder: "Enter invitation code",
+
+    submit: "Submit RSVP",
+    submitting: "Submitting...",
+    thankYou: "Thank you!",
+    thankYouText:
+      "Your RSVP has been received. Thank you for confirming your attendance. We look forward to celebrating with you!",
+    submitAnother: "Submit Another RSVP",
+
+    emailError: "Please enter a valid email address.",
+    attendingError: "Please select whether you will be attending.",
+    guestCountError: "Please enter the total number of guests attending.",
+    guestNameError: "Please enter the name of each guest.",
+    mealError: "Please select a meal for each guest.",
+    codeError: "Please enter the invitation code from your wedding card.",
+    codeSubmitError:
+      "Please enter the correct invitation code before submitting your RSVP.",
+    generalError:
+      "Something went wrong. Please try again or contact Istiak and Eram directly.",
+
+    calendarTitle: "Istiak & Eram Wedding",
+    calendarDetails:
+      "Wedding celebration for Istiak and Eram. Please check the wedding website for RSVP and event details.",
+  },
+
+  fr: {
+    langEnglish: "EN",
+    langFrench: "FR",
+
+    weddingPill: "Nous nous marions",
+    weddingOf: "Le mariage de",
+    heroDescription:
+      "Joignez-vous à nous pour célébrer notre mariage entourés de notre famille, de nos amis et d’amour.",
+    rsvpNow: "Confirmer ma présence",
+    getDirections: "Obtenir l’itinéraire",
+    addCalendar: "Ajouter au calendrier",
+    googleCalendar: "Google Agenda",
+    appleOutlookCalendar: "Calendrier Apple / Outlook",
+
+    saveTheDate: "Réservez la date",
+    saveDateMain: "22 août",
+    dateTitle: "Date",
+    dateFull: "Samedi 22 août 2026",
+    venueTitle: "Lieu",
+    dinnerTitle: "Options du repas",
+    dinnerOptions: "🐟 Saumon, 🥩 steak, ou 🥗 végétarien",
+
+    weddingDetails: "Détails du mariage",
+    rsvpInfo:
+      "Veuillez confirmer le nombre total de personnes présentes et choisir un repas pour chaque invité.",
+    detailsPlaceholder:
+      "L’heure de la cérémonie, l’heure de la réception, le code vestimentaire, les informations de stationnement, les détails d’hôtel et les informations de registre pourront être ajoutés une fois confirmés.",
+
+    rsvpLabel: "RSVP",
+    rsvpHeading: "Confirmez votre présence",
+    rsvpIntro:
+      "Veuillez remplir le formulaire ci-dessous et choisir un repas pour chaque invité.",
+    fullName: "Nom complet",
+    fullNamePlaceholder: "Votre nom complet",
+    email: "Courriel",
+    emailPlaceholder: "vous@exemple.com",
+    phone: "Numéro de téléphone (facultatif)",
+    phonePlaceholder: "(514) 000-0000",
+    attending: "Serez-vous présent(e)?",
+    selectResponse: "Sélectionnez une réponse",
+    yes: "Oui",
+    no: "Non",
+
+    guestCount: "Combien de personnes seront présentes, vous inclus?",
+    guestCountPlaceholder: "Entrez le nombre d’invités",
+    guest: "Invité",
+    guestName: "Nom de l’invité",
+    yourName: "Votre nom",
+    guestNamePlaceholder: "Nom de l’invité",
+    mealChoice: "Choix du repas",
+    selectMeal: "Sélectionnez un repas",
+
+    allergies: "Allergies ou restrictions alimentaires",
+    allergiesPlaceholder:
+      "Veuillez indiquer toute allergie ou restriction alimentaire.",
+    notes: "Message / Notes",
+    notesPlaceholder: "Message facultatif pour Istiak et Eram",
+
+    songRequestTitle: "Demande musicale",
+    songRequestText:
+      "Dites-nous une chanson que vous aimeriez entendre au mariage.",
+    songRequestLabel: "Demande musicale (facultatif)",
+    songRequestPlaceholder: "Exemple : Perfect par Ed Sheeran",
+
+    inviteCodeTitle: "Code d’invitation requis",
+    inviteCodeText:
+      "Entrez le code figurant sur votre invitation avant de soumettre votre RSVP.",
+    inviteCodeLabel: "Code d’invitation",
+    inviteCodePlaceholder: "Entrez le code d’invitation",
+
+    submit: "Soumettre le RSVP",
+    submitting: "Soumission...",
+    thankYou: "Merci!",
+    thankYouText:
+      "Votre RSVP a été reçu. Merci d’avoir confirmé votre présence. Nous avons hâte de célébrer avec vous!",
+    submitAnother: "Soumettre un autre RSVP",
+
+    emailError: "Veuillez entrer une adresse courriel valide.",
+    attendingError: "Veuillez indiquer si vous serez présent(e).",
+    guestCountError:
+      "Veuillez entrer le nombre total de personnes présentes.",
+    guestNameError: "Veuillez entrer le nom de chaque invité.",
+    mealError: "Veuillez choisir un repas pour chaque invité.",
+    codeError:
+      "Veuillez entrer le code d’invitation figurant sur votre carte de mariage.",
+    codeSubmitError:
+      "Veuillez entrer le bon code d’invitation avant de soumettre votre RSVP.",
+    generalError:
+      "Une erreur s’est produite. Veuillez réessayer ou contacter directement Istiak et Eram.",
+
+    calendarTitle: "Mariage d’Istiak et Eram",
+    calendarDetails:
+      "Célébration du mariage d’Istiak et Eram. Veuillez consulter le site du mariage pour le RSVP et les détails de l’événement.",
+  },
+};
 
 const STORAGE_KEY = "istiak-eram-wedding-rsvps";
 const GOOGLE_SCRIPT_URL =
@@ -24,19 +229,10 @@ const INVITE_CODE = "IE2026";
 const NEW_LINE = String.fromCharCode(10);
 
 const CALENDAR_EVENT = {
-  title: "Istiak & Eram Wedding",
   startDate: "20260822",
   endDate: "20260823",
-  details:
-    "Wedding celebration for Istiak and Eram. Please check the wedding website for RSVP and event details.",
   location: `${VENUE.name}, ${VENUE.address}`,
 };
-
-const GOOGLE_CALENDAR_URL = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-  CALENDAR_EVENT.title
-)}&dates=${CALENDAR_EVENT.startDate}/${CALENDAR_EVENT.endDate}&details=${encodeURIComponent(
-  CALENDAR_EVENT.details
-)}&location=${encodeURIComponent(CALENDAR_EVENT.location)}`;
 
 const nameFont = {
   fontFamily: 'Georgia, "Times New Roman", serif',
@@ -206,6 +402,9 @@ function FloatingDecor() {
 }
 
 export default function WeddingWebsite() {
+  const [lang, setLang] = useState("en");
+  const t = TEXT[lang];
+
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -226,6 +425,12 @@ export default function WeddingWebsite() {
     songRequest: "",
     notes: "",
   });
+
+  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+    t.calendarTitle
+  )}&dates=${CALENDAR_EVENT.startDate}/${CALENDAR_EVENT.endDate}&details=${encodeURIComponent(
+    t.calendarDetails
+  )}&location=${encodeURIComponent(CALENDAR_EVENT.location)}`;
 
   function updateGuestCount(value) {
     const cleanedValue = String(value).replace(/[^0-9]/g, "");
@@ -268,16 +473,16 @@ export default function WeddingWebsite() {
       email.lastIndexOf(".") > email.indexOf("@") + 1;
 
     if (!email || !validEmail) {
-      setEmailError("Please enter a valid email address.");
-      setSubmitError("Please enter a valid email address.");
+      setEmailError(t.emailError);
+      setSubmitError(t.emailError);
       return;
     }
 
     setEmailError("");
 
     if (!form.attending) {
-      setAttendingError("Please select whether you will be attending.");
-      setSubmitError("Please select whether you will be attending.");
+      setAttendingError(t.attendingError);
+      setSubmitError(t.attendingError);
       return;
     }
 
@@ -285,28 +490,26 @@ export default function WeddingWebsite() {
 
     if (form.attending === "Yes") {
       if (!form.guestCount || form.guests.length === 0) {
-        setSubmitError("Please enter the total number of guests attending.");
+        setSubmitError(t.guestCountError);
         return;
       }
 
       const missingGuestName = form.guests.some((guest) => !guest.name.trim());
       if (missingGuestName) {
-        setSubmitError("Please enter the name of each guest.");
+        setSubmitError(t.guestNameError);
         return;
       }
 
       const missingMeal = form.guests.some((guest) => !guest.meal);
       if (missingMeal) {
-        setSubmitError("Please select a meal for each guest.");
+        setSubmitError(t.mealError);
         return;
       }
     }
 
     if (inviteCode.trim().toUpperCase() !== INVITE_CODE) {
-      setInviteCodeError("Please enter the invitation code from your wedding card.");
-      setSubmitError(
-        "Please enter the correct invitation code before submitting your RSVP."
-      );
+      setInviteCodeError(t.codeError);
+      setSubmitError(t.codeSubmitError);
       return;
     }
 
@@ -335,9 +538,7 @@ export default function WeddingWebsite() {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify([...saved, rsvp]));
       setSubmitted(true);
     } catch (error) {
-      setSubmitError(
-        "Something went wrong. Please try again or contact Istiak and Eram directly."
-      );
+      setSubmitError(t.generalError);
     } finally {
       setSubmitting(false);
     }
@@ -358,8 +559,8 @@ export default function WeddingWebsite() {
       `DTSTAMP:${dtStamp}`,
       `DTSTART;VALUE=DATE:${CALENDAR_EVENT.startDate}`,
       `DTEND;VALUE=DATE:${CALENDAR_EVENT.endDate}`,
-      `SUMMARY:${CALENDAR_EVENT.title}`,
-      `DESCRIPTION:${CALENDAR_EVENT.details}`,
+      `SUMMARY:${t.calendarTitle}`,
+      `DESCRIPTION:${t.calendarDetails}`,
       `LOCATION:${CALENDAR_EVENT.location}`,
       "END:VEVENT",
       "END:VCALENDAR",
@@ -390,13 +591,40 @@ export default function WeddingWebsite() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:py-24">
           <div>
+            <div className="mb-5 flex justify-center md:justify-start">
+              <div className="flex rounded-full border border-amber-300 bg-[#fffaf0]/80 p-1 shadow-sm backdrop-blur">
+                <button
+                  type="button"
+                  onClick={() => setLang("en")}
+                  className={
+                    lang === "en"
+                      ? "rounded-full bg-[#14352f] px-4 py-1.5 text-xs font-bold text-white shadow-sm transition"
+                      : "rounded-full px-4 py-1.5 text-xs font-bold text-[#14352f] transition hover:bg-white"
+                  }
+                >
+                  {t.langEnglish}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("fr")}
+                  className={
+                    lang === "fr"
+                      ? "rounded-full bg-[#14352f] px-4 py-1.5 text-xs font-bold text-white shadow-sm transition"
+                      : "rounded-full px-4 py-1.5 text-xs font-bold text-[#14352f] transition hover:bg-white"
+                  }
+                >
+                  {t.langFrench}
+                </button>
+              </div>
+            </div>
+
             <p className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-amber-300 bg-[#fffaf0]/80 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-[0_0_28px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/50 md:mx-0">
-              <span>♡</span> We are getting married
+              <span>♡</span> {t.weddingPill}
             </p>
 
             <div className="mt-2 text-center md:text-left">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
-                The Wedding of
+                {t.weddingOf}
               </p>
 
               <h1 className="text-[#1f1a17]">
@@ -422,7 +650,7 @@ export default function WeddingWebsite() {
             </div>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-stone-700">
-              Join us as we celebrate our wedding surrounded by family, friends, and love.
+              {t.heroDescription}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -430,7 +658,7 @@ export default function WeddingWebsite() {
                 href="#rsvp"
                 className="rounded-2xl bg-[#14352f] px-6 py-3 text-center font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925]"
               >
-                RSVP Now
+                {t.rsvpNow}
               </a>
 
               <button
@@ -438,7 +666,7 @@ export default function WeddingWebsite() {
                 onClick={openDirections}
                 className="rounded-2xl bg-[#d68a1f] px-6 py-3 text-center font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#b87316]"
               >
-                Get Directions
+                {t.getDirections}
               </button>
 
               <div className="relative">
@@ -447,26 +675,26 @@ export default function WeddingWebsite() {
                   onClick={() => setCalendarOpen(!calendarOpen)}
                   className="w-full rounded-2xl bg-[#7a2e45] px-6 py-3 text-center font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#642539] sm:w-auto"
                 >
-                  Add to Calendar
+                  {t.addCalendar}
                 </button>
 
                 {calendarOpen && (
                   <div className="absolute left-0 z-30 mt-3 w-full overflow-hidden rounded-2xl border border-rose-200 bg-[#fffaf0] shadow-xl sm:w-56">
                     <a
-                      href={GOOGLE_CALENDAR_URL}
+                      href={googleCalendarUrl}
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => setCalendarOpen(false)}
                       className="block px-5 py-3 text-sm font-semibold text-[#7a2e45] hover:bg-[#f8f1e7]"
                     >
-                      Google Calendar
+                      {t.googleCalendar}
                     </a>
                     <button
                       type="button"
                       onClick={downloadCalendarInvite}
                       className="block w-full px-5 py-3 text-left text-sm font-semibold text-[#7a2e45] hover:bg-[#f8f1e7]"
                     >
-                      Apple / Outlook Calendar
+                      {t.appleOutlookCalendar}
                     </button>
                   </div>
                 )}
@@ -492,7 +720,7 @@ export default function WeddingWebsite() {
                   <div className="mb-3 flex items-center justify-center gap-3">
                     <span className="h-px w-6 bg-amber-500/70 md:w-8" />
                     <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-amber-700 md:text-[11px] md:tracking-[0.35em]">
-                      Save the Date
+                      {t.saveTheDate}
                     </p>
                     <span className="h-px w-6 bg-amber-500/70 md:w-8" />
                   </div>
@@ -501,7 +729,7 @@ export default function WeddingWebsite() {
                     style={nameFont}
                     className="text-2xl font-semibold leading-none tracking-[-0.04em] text-[#1f1a17] md:text-3xl"
                   >
-                    August 22
+                    {t.saveDateMain}
                   </p>
 
                   <div className="mt-2 flex items-center justify-center gap-2.5">
@@ -518,7 +746,7 @@ export default function WeddingWebsite() {
 
                   <div className="mt-3 border-t border-amber-200/80 pt-3 md:mt-4">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 md:text-xs md:tracking-[0.24em]">
-                      Verger Richard Legault
+                      {VENUE.name}
                     </p>
                   </div>
                 </div>
@@ -532,23 +760,21 @@ export default function WeddingWebsite() {
         <div className="grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <DateIcon />
-            <h2 className="text-xl font-semibold">Date</h2>
-            <p className="mt-2 text-stone-600">Saturday, August 22, 2026</p>
+            <h2 className="text-xl font-semibold">{t.dateTitle}</h2>
+            <p className="mt-2 text-stone-600">{t.dateFull}</p>
           </div>
 
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <Icon>📍</Icon>
-            <h2 className="text-xl font-semibold">Venue</h2>
+            <h2 className="text-xl font-semibold">{t.venueTitle}</h2>
             <p className="mt-2 text-stone-600">{VENUE.name}</p>
             <p className="text-stone-500">{VENUE.address}</p>
           </div>
 
           <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <Icon>🍽️</Icon>
-            <h2 className="text-xl font-semibold">Dinner Options</h2>
-            <p className="mt-2 text-stone-600">
-              🐟 Salmon, 🥩 Steak, or 🥗 Vegetarian
-            </p>
+            <h2 className="text-xl font-semibold">{t.dinnerTitle}</h2>
+            <p className="mt-2 text-stone-600">{t.dinnerOptions}</p>
           </div>
         </div>
       </section>
@@ -556,11 +782,13 @@ export default function WeddingWebsite() {
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="rounded-[2rem] border border-amber-200 bg-[#211814] p-6 text-[#fffaf0] shadow-2xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_38px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/40 lg:self-start">
-            <h2 className="font-serif text-3xl text-[#f7e7c0]">Wedding Details</h2>
+            <h2 className="font-serif text-3xl text-[#f7e7c0]">
+              {t.weddingDetails}
+            </h2>
 
             <div className="mt-6 space-y-4 text-sm text-[#fff3db]">
               <p className="flex gap-3">
-                <DateIcon small /> Saturday, August 22, 2026
+                <DateIcon small /> {t.dateFull}
               </p>
               <p className="flex gap-3">
                 <SmallIcon>📍</SmallIcon>
@@ -574,14 +802,12 @@ export default function WeddingWebsite() {
                 <SmallIcon>☎️</SmallIcon> {VENUE.phone}
               </p>
               <p className="flex gap-3">
-                <SmallIcon>👥</SmallIcon> Please RSVP with your total number of
-                guests and a meal choice for each person.
+                <SmallIcon>👥</SmallIcon> {t.rsvpInfo}
               </p>
             </div>
 
             <div className="mt-5 rounded-2xl border border-amber-300 bg-[#33241d] p-4 text-sm leading-6 text-[#fff3db]">
-              Ceremony time, reception time, dress code, parking notes, hotel
-              details, and registry information can be added here once confirmed.
+              {t.detailsPlaceholder}
             </div>
           </div>
 
@@ -595,10 +821,9 @@ export default function WeddingWebsite() {
                   <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-green-100 text-3xl text-green-700">
                     ✓
                   </div>
-                  <h2 className="font-serif text-4xl">Thank you!</h2>
+                  <h2 className="font-serif text-4xl">{t.thankYou}</h2>
                   <p className="mx-auto mt-4 max-w-md text-stone-600">
-                    Your RSVP has been received. Thank you for confirming your
-                    attendance. We look forward to celebrating with you!
+                    {t.thankYouText}
                   </p>
 
                   <div className="mt-8 flex justify-center">
@@ -607,7 +832,7 @@ export default function WeddingWebsite() {
                       onClick={() => setSubmitted(false)}
                       className="rounded-2xl border border-amber-200 px-5 py-3 font-semibold hover:bg-stone-50"
                     >
-                      Submit Another RSVP
+                      {t.submitAnother}
                     </button>
                   </div>
                 </div>
@@ -616,29 +841,25 @@ export default function WeddingWebsite() {
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.25em] text-amber-600">
-                    RSVP
+                    {t.rsvpLabel}
                   </p>
-                  <h2 className="mt-2 font-serif text-4xl">
-                    Confirm Your Attendance
-                  </h2>
-                  <p className="mt-3 text-stone-600">
-                    Please fill out the form below and choose a meal for each guest.
-                  </p>
+                  <h2 className="mt-2 font-serif text-4xl">{t.rsvpHeading}</h2>
+                  <p className="mt-3 text-stone-600">{t.rsvpIntro}</p>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <Field label="Full Name">
+                  <Field label={t.fullName}>
                     <Input
                       required
                       value={form.name}
                       onChange={(event) =>
                         setForm({ ...form, name: event.target.value })
                       }
-                      placeholder="Your full name"
+                      placeholder={t.fullNamePlaceholder}
                     />
                   </Field>
 
-                  <Field label="Email">
+                  <Field label={t.email}>
                     <Input
                       type="email"
                       required
@@ -647,7 +868,7 @@ export default function WeddingWebsite() {
                         setForm({ ...form, email: event.target.value });
                         if (emailError) setEmailError("");
                       }}
-                      placeholder="you@example.com"
+                      placeholder={t.emailPlaceholder}
                     />
                     {emailError && (
                       <p className="mt-2 text-sm font-medium text-red-600">
@@ -656,17 +877,17 @@ export default function WeddingWebsite() {
                     )}
                   </Field>
 
-                  <Field label="Phone Number (optional)">
+                  <Field label={t.phone}>
                     <Input
                       value={form.phone}
                       onChange={(event) =>
                         setForm({ ...form, phone: event.target.value })
                       }
-                      placeholder="(514) 000-0000"
+                      placeholder={t.phonePlaceholder}
                     />
                   </Field>
 
-                  <Field label="Will you be attending?">
+                  <Field label={t.attending}>
                     <Select
                       required
                       value={form.attending}
@@ -676,10 +897,10 @@ export default function WeddingWebsite() {
                       }}
                     >
                       <option value="" disabled>
-                        Select response
+                        {t.selectResponse}
                       </option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
+                      <option value="Yes">{t.yes}</option>
+                      <option value="No">{t.no}</option>
                     </Select>
                     {attendingError && (
                       <p className="mt-2 text-sm font-medium text-red-600">
@@ -691,7 +912,7 @@ export default function WeddingWebsite() {
 
                 {form.attending === "Yes" && (
                   <>
-                    <Field label="How many people will attend, including you?">
+                    <Field label={t.guestCount}>
                       <Input
                         type="text"
                         inputMode="numeric"
@@ -700,7 +921,7 @@ export default function WeddingWebsite() {
                         value={form.guestCount}
                         onChange={(event) => updateGuestCount(event.target.value)}
                         onBlur={fixGuestCountOnBlur}
-                        placeholder="Enter number of guests"
+                        placeholder={t.guestCountPlaceholder}
                       />
                     </Field>
 
@@ -710,20 +931,24 @@ export default function WeddingWebsite() {
                           key={index}
                           className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(214,138,31,0.32)] hover:ring-2 hover:ring-amber-400/40"
                         >
-                          <h3 className="mb-4 font-semibold">Guest {index + 1}</h3>
+                          <h3 className="mb-4 font-semibold">
+                            {t.guest} {index + 1}
+                          </h3>
                           <div className="grid gap-4 md:grid-cols-2">
-                            <Field label="Guest Name">
+                            <Field label={t.guestName}>
                               <Input
                                 required
                                 value={guest.name}
                                 onChange={(event) =>
                                   updateGuest(index, "name", event.target.value)
                                 }
-                                placeholder={index === 0 ? "Your name" : "Guest name"}
+                                placeholder={
+                                  index === 0 ? t.yourName : t.guestNamePlaceholder
+                                }
                               />
                             </Field>
 
-                            <Field label="Meal Choice">
+                            <Field label={t.mealChoice}>
                               <Select
                                 required
                                 value={guest.meal}
@@ -732,11 +957,11 @@ export default function WeddingWebsite() {
                                 }
                               >
                                 <option value="" disabled>
-                                  Select meal
+                                  {t.selectMeal}
                                 </option>
                                 {MEAL_OPTIONS.map((meal) => (
                                   <option key={meal.value} value={meal.value}>
-                                    {meal.label}
+                                    {meal.labels[lang]}
                                   </option>
                                 ))}
                               </Select>
@@ -746,25 +971,25 @@ export default function WeddingWebsite() {
                       ))}
                     </div>
 
-                    <Field label="Allergies or Dietary Restrictions">
+                    <Field label={t.allergies}>
                       <Textarea
                         value={form.allergies}
                         onChange={(event) =>
                           setForm({ ...form, allergies: event.target.value })
                         }
-                        placeholder="Please mention any allergies or dietary restrictions."
+                        placeholder={t.allergiesPlaceholder}
                       />
                     </Field>
                   </>
                 )}
 
-                <Field label="Message / Notes">
+                <Field label={t.notes}>
                   <Textarea
                     value={form.notes}
                     onChange={(event) =>
                       setForm({ ...form, notes: event.target.value })
                     }
-                    placeholder="Optional message for Istiak & Eram"
+                    placeholder={t.notesPlaceholder}
                   />
                 </Field>
 
@@ -775,21 +1000,21 @@ export default function WeddingWebsite() {
                     </span>
                     <div>
                       <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#14352f]">
-                        Song Request
+                        {t.songRequestTitle}
                       </p>
                       <p className="mt-1 text-sm text-stone-600">
-                        Tell us one song you would love to hear at the wedding.
+                        {t.songRequestText}
                       </p>
                     </div>
                   </div>
 
-                  <Field label="Song Request (optional)">
+                  <Field label={t.songRequestLabel}>
                     <Input
                       value={form.songRequest}
                       onChange={(event) =>
                         setForm({ ...form, songRequest: event.target.value })
                       }
-                      placeholder="Example: Perfect by Ed Sheeran"
+                      placeholder={t.songRequestPlaceholder}
                     />
                   </Field>
                 </div>
@@ -801,15 +1026,15 @@ export default function WeddingWebsite() {
                     </span>
                     <div>
                       <p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-800">
-                        Invitation Code Required
+                        {t.inviteCodeTitle}
                       </p>
                       <p className="mt-1 text-sm text-stone-600">
-                        Enter the code from your wedding invitation before submitting.
+                        {t.inviteCodeText}
                       </p>
                     </div>
                   </div>
 
-                  <Field label="Invitation Code">
+                  <Field label={t.inviteCodeLabel}>
                     <Input
                       required
                       value={inviteCode}
@@ -817,7 +1042,7 @@ export default function WeddingWebsite() {
                         setInviteCode(event.target.value.toUpperCase());
                         if (inviteCodeError) setInviteCodeError("");
                       }}
-                      placeholder="Enter invitation code"
+                      placeholder={t.inviteCodePlaceholder}
                     />
                     {inviteCodeError && (
                       <p className="mt-2 text-sm font-medium text-red-600">
@@ -838,7 +1063,7 @@ export default function WeddingWebsite() {
                   disabled={submitting}
                   className="w-full rounded-2xl bg-[#14352f] px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#0f2925] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {submitting ? "Submitting..." : "Submit RSVP"}
+                  {submitting ? t.submitting : t.submit}
                 </button>
               </form>
             )}
@@ -870,7 +1095,7 @@ export default function WeddingWebsite() {
         <div className="mx-auto mt-2 h-px w-16 rounded-full bg-amber-500/50 transition-all duration-300 group-hover:w-36 group-hover:bg-amber-500/80" />
 
         <p className="mt-3 text-base transition duration-300 group-hover:text-stone-700">
-          August 22, 2026 · {VENUE.name}
+          {t.saveDateMain}, 2026 · {VENUE.name}
         </p>
       </footer>
     </main>
