@@ -367,35 +367,8 @@ export default function WeddingWebsite() {
   }}
 />
 
-  <FloatingDecor />
-
-<div className="fixed right-4 top-4 z-50 rounded-full border border-amber-300 bg-[#fffaf0]/90 p-1 shadow-lg backdrop-blur">
-  <button
-    type="button"
-    onClick={() => setLang("en")}
-    className={
-      lang === "en"
-        ? "rounded-full bg-[#14352f] px-4 py-1.5 text-xs font-bold text-white shadow-sm transition"
-        : "rounded-full px-4 py-1.5 text-xs font-bold text-[#14352f] transition hover:bg-white"
-    }
-  >
-    EN
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setLang("fr")}
-    className={
-      lang === "fr"
-        ? "rounded-full bg-[#14352f] px-4 py-1.5 text-xs font-bold text-white shadow-sm transition"
-        : "rounded-full px-4 py-1.5 text-xs font-bold text-[#14352f] transition hover:bg-white"
-    }
-  >
-    FR
-  </button>
-</div>
-
-<section className="relative z-10 overflow-hidden">
+      <FloatingDecor />
+      <section className="relative z-10 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#d8b46a,transparent_32%),radial-gradient(circle_at_bottom_right,#14352f,transparent_34%)] opacity-40" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:py-24">
@@ -408,28 +381,17 @@ export default function WeddingWebsite() {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
                 The Wedding of
               </p>
-              <h1 className="mx-auto inline-block text-center text-[#1f1a17] md:mx-0">
-  <span
-    style={nameFont}
-    className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
-  >
-    Istiak
-  </span>
-
-  <span
-    style={scriptFont}
-    className="my-2 block text-center text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl"
-  >
-    &
-  </span>
-
-  <span
-    style={nameFont}
-    className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
-  >
-    Eram
-  </span>
-</h1>
+              <h1 className="text-[#1f1a17]">
+                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
+                  Istiak
+                </span>
+                <span style={scriptFont} className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl">
+                  &
+                </span>
+                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
+                  Eram
+                </span>
+              </h1>
             </div>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-stone-700">
