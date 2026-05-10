@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const HERO_IMAGE = "/ie2026.png";
 const LOGO_IMAGE = "/logo.png";
+const BACKGROUND_IMAGE = "/botanical-bg.png";
 
 const VENUE = {
   name: "Verger Richard Legault",
@@ -305,7 +306,7 @@ function Input(props) {
   return (
     <input
       {...props}
-      className="w-full rounded-2xl border border-amber-200 bg-white px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
+      className="w-full rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
     />
   );
 }
@@ -314,7 +315,7 @@ function Select(props) {
   return (
     <select
       {...props}
-      className="w-full rounded-2xl border border-amber-200 bg-white px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
+      className="w-full rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
     />
   );
 }
@@ -323,7 +324,7 @@ function Textarea(props) {
   return (
     <textarea
       {...props}
-      className="min-h-28 w-full rounded-2xl border border-amber-200 bg-white px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
+      className="min-h-28 w-full rounded-2xl border border-amber-200 bg-white/95 px-4 py-3 text-[#1f1a17] outline-none transition duration-300 hover:border-amber-400 hover:shadow-[0_0_24px_rgba(214,138,31,0.28)] hover:ring-2 hover:ring-amber-300/40 focus:border-amber-400 focus:shadow-[0_0_28px_rgba(214,138,31,0.38)] focus:ring-4 focus:ring-amber-100"
     />
   );
 }
@@ -347,19 +348,19 @@ function FloatingDecor() {
       <style>{`
         @keyframes weddingFall {
           0% { transform: translate3d(0, -15vh, 0) rotate(0deg); opacity: 0; }
-          10% { opacity: 0.75; }
-          50% { opacity: 0.55; }
+          10% { opacity: 0.55; }
+          50% { opacity: 0.38; }
           100% { transform: translate3d(45px, 115vh, 0) rotate(260deg); opacity: 0; }
         }
 
         @keyframes weddingTwinkle {
           0%, 100% {
-            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.25));
+            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.22));
             transform: scale(0.9);
           }
           50% {
-            filter: drop-shadow(0 0 10px rgba(214, 180, 109, 0.55));
-            transform: scale(1.14);
+            filter: drop-shadow(0 0 10px rgba(214, 180, 109, 0.45));
+            transform: scale(1.12);
           }
         }
 
@@ -370,12 +371,12 @@ function FloatingDecor() {
           animation-timing-function: linear;
           animation-iteration-count: infinite;
           color: #d6b46d;
-          text-shadow: 0 0 10px rgba(214, 180, 109, 0.45);
+          text-shadow: 0 0 10px rgba(214, 180, 109, 0.35);
         }
 
         .wedding-float-item span {
           display: block;
-          animation: weddingTwinkle 2.3s ease-in-out infinite;
+          animation: weddingTwinkle 2.6s ease-in-out infinite;
         }
       `}</style>
 
@@ -584,16 +585,23 @@ export default function WeddingWebsite() {
   }
 
   return (
-    <main className="relative isolate min-h-screen overflow-hidden bg-[#f4efe7] text-[#1f1a17]">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#f8f3ea] text-[#1f1a17]">
+      <div
+        className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-75"
+        style={{
+          backgroundImage: `linear-gradient(rgba(248, 243, 234, 0.14), rgba(248, 243, 234, 0.14)), url(${BACKGROUND_IMAGE})`,
+        }}
+      />
+
       <FloatingDecor />
 
       <section className="relative z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#d8b46a,transparent_32%),radial-gradient(circle_at_bottom_right,#14352f,transparent_34%)] opacity-40" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(216,180,106,0.22),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(20,53,47,0.12),transparent_34%)]" />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:px-10 lg:py-24">
           <div>
             <div className="mb-5 flex justify-center md:justify-start">
-              <div className="flex rounded-full border border-amber-300 bg-[#fffaf0]/80 p-1 shadow-sm backdrop-blur">
+              <div className="flex rounded-full border border-amber-300 bg-[#fffaf0]/85 p-1 shadow-sm backdrop-blur">
                 <button
                   type="button"
                   onClick={() => setLang("en")}
@@ -619,7 +627,7 @@ export default function WeddingWebsite() {
               </div>
             </div>
 
-            <p className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-amber-300 bg-[#fffaf0]/80 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-[0_0_28px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/50 md:mx-0">
+            <p className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full border border-amber-300 bg-[#fffaf0]/85 px-4 py-2 text-sm font-medium text-amber-800 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-[0_0_28px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/50 md:mx-0">
               <span>♡</span> {t.weddingPill}
             </p>
 
@@ -759,20 +767,20 @@ export default function WeddingWebsite() {
       
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid gap-5 md:grid-cols-3">
-          <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
+          <div className="rounded-3xl bg-[#fffaf0]/92 p-6 shadow-sm ring-1 ring-amber-100 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <DateIcon />
             <h2 className="text-xl font-semibold">{t.dateTitle}</h2>
             <p className="mt-2 text-stone-600">{t.dateFull}</p>
           </div>
 
-          <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
+          <div className="rounded-3xl bg-[#fffaf0]/92 p-6 shadow-sm ring-1 ring-amber-100 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <Icon>📍</Icon>
             <h2 className="text-xl font-semibold">{t.venueTitle}</h2>
             <p className="mt-2 text-stone-600">{VENUE.name}</p>
             <p className="text-stone-500">{VENUE.address}</p>
           </div>
 
-          <div className="rounded-3xl bg-[#fffaf0] p-6 shadow-sm ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
+          <div className="rounded-3xl bg-[#fffaf0]/92 p-6 shadow-sm ring-1 ring-amber-100 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50">
             <Icon>🍽️</Icon>
             <h2 className="text-xl font-semibold">{t.dinnerTitle}</h2>
             <p className="mt-2 text-stone-600">{t.dinnerOptions}</p>
@@ -782,7 +790,7 @@ export default function WeddingWebsite() {
 
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-12 md:px-10">
         <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="rounded-[2rem] border border-amber-200 bg-[#211814] p-6 text-[#fffaf0] shadow-2xl transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_38px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/40 lg:self-start">
+          <div className="rounded-[2rem] border border-amber-200 bg-[#211814]/96 p-6 text-[#fffaf0] shadow-2xl backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_38px_rgba(214,138,31,0.45)] hover:ring-2 hover:ring-amber-400/40 lg:self-start">
             <h2 className="font-serif text-3xl text-[#f7e7c0]">
               {t.weddingDetails}
             </h2>
@@ -814,7 +822,7 @@ export default function WeddingWebsite() {
 
           <div
             id="rsvp"
-            className="rounded-[2rem] bg-[#fffaf0] p-6 shadow-xl ring-1 ring-amber-100 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_38px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50 md:p-8"
+            className="rounded-[2rem] bg-[#fffaf0]/94 p-6 shadow-xl ring-1 ring-amber-100 backdrop-blur transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_38px_rgba(214,138,31,0.38)] hover:ring-2 hover:ring-amber-400/50 md:p-8"
           >
             {submitted ? (
               <div className="grid min-h-[520px] place-items-center text-center">
@@ -930,7 +938,7 @@ export default function WeddingWebsite() {
                       {form.guests.map((guest, index) => (
                         <div
                           key={index}
-                          className="rounded-3xl border border-amber-200 bg-[#f8f1e7] p-4 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(214,138,31,0.32)] hover:ring-2 hover:ring-amber-400/40"
+                          className="rounded-3xl border border-amber-200 bg-[#f8f1e7]/90 p-4 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(214,138,31,0.32)] hover:ring-2 hover:ring-amber-400/40"
                         >
                           <h3 className="mb-4 font-semibold">
                             {t.guest} {index + 1}
