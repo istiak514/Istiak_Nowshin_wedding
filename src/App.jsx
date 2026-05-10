@@ -359,11 +359,13 @@ export default function WeddingWebsite() {
   return (
     <main className="relative isolate min-h-screen overflow-hidden bg-[#f8f3ea] text-[#1f1a17]">
       <div
-        className="pointer-events-none fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-75"
-        style={{
-          backgroundImage: `linear-gradient(rgba(248, 243, 234, 0.12), rgba(248, 243, 234, 0.12)), url(${BACKGROUND_IMAGE})`,
-        }}
-      />
+  className="pointer-events-none fixed inset-0 z-0 bg-no-repeat opacity-95"
+  style={{
+    backgroundImage: `linear-gradient(rgba(248, 243, 234, 0.03), rgba(248, 243, 234, 0.03)), url(${BACKGROUND_IMAGE})`,
+    backgroundSize: "100% auto",
+    backgroundPosition: "top center",
+  }}
+/>
 
       <FloatingDecor />
       <section className="relative z-10 overflow-hidden">
