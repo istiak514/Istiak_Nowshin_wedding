@@ -52,6 +52,7 @@ const TEXT = {
 
     saveTheDate: "Save the Date",
     saveDateMain: "August 22",
+    footerDate: "August 22, 2026",
     dateTitle: "Date",
     dateFull: "Saturday, August 22, 2026",
     venueTitle: "Venue",
@@ -142,6 +143,7 @@ const TEXT = {
 
     saveTheDate: "Réservez la date",
     saveDateMain: "22 août",
+    footerDate: "22 août 2026",
     dateTitle: "Date",
     dateFull: "Samedi 22 août 2026",
     venueTitle: "Lieu",
@@ -205,8 +207,7 @@ const TEXT = {
 
     emailError: "Veuillez entrer une adresse courriel valide.",
     attendingError: "Veuillez indiquer si vous serez présent(e).",
-    guestCountError:
-      "Veuillez entrer le nombre total de personnes présentes.",
+    guestCountError: "Veuillez entrer le nombre total de personnes présentes.",
     guestNameError: "Veuillez entrer le nom de chaque invité.",
     mealError: "Veuillez choisir un repas pour chaque invité.",
     codeError:
@@ -346,19 +347,19 @@ function FloatingDecor() {
       <style>{`
         @keyframes weddingFall {
           0% { transform: translate3d(0, -15vh, 0) rotate(0deg); opacity: 0; }
-          10% { opacity: 0.95; }
-          50% { opacity: 0.8; }
+          10% { opacity: 0.75; }
+          50% { opacity: 0.55; }
           100% { transform: translate3d(45px, 115vh, 0) rotate(260deg); opacity: 0; }
         }
 
         @keyframes weddingTwinkle {
           0%, 100% {
-            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.4));
+            filter: drop-shadow(0 0 3px rgba(214, 180, 109, 0.25));
             transform: scale(0.9);
           }
           50% {
-            filter: drop-shadow(0 0 12px rgba(214, 180, 109, 0.9));
-            transform: scale(1.18);
+            filter: drop-shadow(0 0 10px rgba(214, 180, 109, 0.55));
+            transform: scale(1.14);
           }
         }
 
@@ -369,7 +370,7 @@ function FloatingDecor() {
           animation-timing-function: linear;
           animation-iteration-count: infinite;
           color: #d6b46d;
-          text-shadow: 0 0 12px rgba(214, 180, 109, 0.75);
+          text-shadow: 0 0 10px rgba(214, 180, 109, 0.45);
         }
 
         .wedding-float-item span {
@@ -379,7 +380,7 @@ function FloatingDecor() {
       `}</style>
 
       <div
-        className="pointer-events-none fixed inset-0 z-20 overflow-hidden"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
         {items.map((item, index) => (
@@ -583,7 +584,7 @@ export default function WeddingWebsite() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f4efe7] text-[#1f1a17]">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#f4efe7] text-[#1f1a17]">
       <FloatingDecor />
 
       <section className="relative z-10 overflow-hidden">
@@ -1095,7 +1096,7 @@ export default function WeddingWebsite() {
         <div className="mx-auto mt-2 h-px w-16 rounded-full bg-amber-500/50 transition-all duration-300 group-hover:w-36 group-hover:bg-amber-500/80" />
 
         <p className="mt-3 text-base transition duration-300 group-hover:text-stone-700">
-          {t.saveDateMain}, 2026 · {VENUE.name}
+          {t.footerDate} · {VENUE.name}
         </p>
       </footer>
     </main>
