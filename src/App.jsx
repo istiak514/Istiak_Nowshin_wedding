@@ -381,17 +381,28 @@ export default function WeddingWebsite() {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.5em] text-stone-500 md:text-sm">
                 The Wedding of
               </p>
-              <h1 className="text-[#1f1a17]">
-                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
-                  Istiak
-                </span>
-                <span style={scriptFont} className="my-1 block text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl">
-                  &
-                </span>
-                <span style={nameFont} className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl">
-                  Eram
-                </span>
-              </h1>
+              <h1 className="mx-auto inline-block text-center text-[#1f1a17] md:mx-0">
+  <span
+    style={nameFont}
+    className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
+  >
+    Istiak
+  </span>
+
+  <span
+    style={scriptFont}
+    className="my-2 block text-center text-6xl leading-none text-amber-600 md:text-7xl lg:text-8xl"
+  >
+    &
+  </span>
+
+  <span
+    style={nameFont}
+    className="block text-7xl font-semibold leading-[0.85] tracking-[-0.05em] md:text-8xl lg:text-9xl"
+  >
+    Eram
+  </span>
+</h1>
             </div>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-stone-700">
